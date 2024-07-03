@@ -1,3 +1,12 @@
-@import "reset";
-@import "media-queries";
-@import "rem";
+@import "core/reset";
+
+@import "adaptive/media-queries";
+@import "adaptive/rem";
+
+@import "type/headings";
+@import "type/common";
+
+@import "blocks/body";
+@import "blocks/header";
+@import "blocks/content";
+@import "blocks/footer";
