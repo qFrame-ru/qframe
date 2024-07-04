@@ -1,0 +1,42 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	border-radius: 8rem;
+	overflow: hidden;
+	color: var(--color-text);
+	background-color: var(--color-card-background);
+	box-shadow: rgba(0, 0, 0, .1) 0 1rem 2rem;
+
+	&__slider {
+		position: relative;
+	}
+
+	&__data {
+		display: flex;
+		flex-direction: column;
+		row-gap: 16rem;
+		padding: 16rem;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 16rem;
+		line-height: 24rem;
+	}
+
+	&__params {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 16rem 8rem;
+	}
+
+	&__param {
+		display: flex;
+		flex-direction: column;
+
+		&-label {
+			font-size: 12rem;
+			line-height: 16rem;
+		}
+	}
+}

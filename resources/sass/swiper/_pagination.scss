@@ -1,0 +1,11 @@
+@import "node_modules/swiper/modules/pagination";
+
+.swiper-pagination-bullet {
+	border: 1rem solid var(--color-slider-bullet) !important;
+	background: transparent !important;
+	opacity: 1 !important;
+
+	&-active {
+		background-color: var(--color-slider-bullet) !important;
+	}
+}

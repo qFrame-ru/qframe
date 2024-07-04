@@ -13,7 +13,7 @@
 	<header class="header">
 	    <img
 		    class="header__logo"
-		    src="https://placehold.co/360x80"
+		    src="https://placehold.co/328x80/52BD31/FFF?text=Логотип"
 		    alt="Логотип компании"
 	    >
 	</header>
