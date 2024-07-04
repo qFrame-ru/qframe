@@ -1,5 +1,5 @@
 @extends('site.template')
 
 @section('content')
-	Test
+	<h1>Дома, которые мы построили</h1>
 @stop

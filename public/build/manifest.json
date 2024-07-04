@@ -1,9 +1,4 @@
 {
-  "public/palette.css": {
-    "file": "assets/palette-D0aa0Aog.css",
-    "src": "public/palette.css",
-    "isEntry": true
-  },
   "resources/js/app.js": {
     "file": "assets/app-l0sNRNKZ.js",
     "name": "app",
@@ -11,7 +6,7 @@
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-CZFOB2jO.css",
+    "file": "assets/app-B6lpke8b.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   }

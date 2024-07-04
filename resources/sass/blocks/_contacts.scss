@@ -1,9 +1,13 @@
-.footer {
+.contacts {
 	display: flex;
 	flex-direction: column;
 	row-gap: 8rem;
 	padding: 15rem 16rem 16rem;
 	border-top: 1rem solid var(--color-stroke);
-	font-size: 12rem;
-	line-height: 16rem;
+
+	&__phone {
+		font-weight: 900;
+		font-size: 24rem;
+		line-height: 32rem;
+	}
 }

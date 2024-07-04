@@ -1,5 +1,9 @@
 body {
+	font-family: 'Montserrat', sans-serif;
 	font-size: 16rem;
-	font-family: sans-serif;
+	line-height: 24rem;
 	color: var(--color-text);
+}
+a {
+	color: var(--color-accent);
 }

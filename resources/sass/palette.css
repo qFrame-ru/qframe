@@ -1,3 +1,10 @@
 :root {
-	--color-text: #222;
+	--color-accent: #52BD31;
+	--color-accent-swipe: #6CD84B;
+	--color-text: #222222;
+	--color-stroke: #EEEEEE;
+	--color-page-background: #F9F9F9;
+	--color-card-background: #FFFFFF;
+	--color-slider-bullet: #FFFFFF;
+	--color-placeholder: #CCCCCC;
 }

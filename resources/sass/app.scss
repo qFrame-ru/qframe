@@ -1,12 +1,16 @@
 @import "core/reset";
+@import "core/html";
 
 @import "adaptive/media-queries";
 @import "adaptive/rem";
 
+@import "type/font";
 @import "type/headings";
 @import "type/common";
 
 @import "blocks/body";
+@import "blocks/container";
 @import "blocks/header";
 @import "blocks/content";
+@import "blocks/contacts";
 @import "blocks/footer";
