@@ -1,0 +1,27 @@
+.item-data {
+	display: flex;
+	flex-direction: column;
+	row-gap: 16rem;
+
+	&__title {
+		font-weight: 700;
+		font-size: 16rem;
+		line-height: 24rem;
+	}
+
+	&__params {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 16rem 8rem;
+	}
+
+	&__param {
+		display: flex;
+		flex-direction: column;
+
+		&-label {
+			font-size: 12rem;
+			line-height: 16rem;
+		}
+	}
+}

@@ -5,8 +5,10 @@
 @import "adaptive/rem";
 
 @import "type/font";
-@import "type/headings";
 @import "type/common";
+@import "type/elements/h1";
+@import "type/elements/p";
+@import "type/article";
 
 @import "swiper/pagination";
 
@@ -17,3 +19,5 @@
 @import "blocks/contacts";
 @import "blocks/footer";
 @import "blocks/card";
+@import "blocks/item-data";
+@import "blocks/slider";

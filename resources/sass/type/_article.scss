@@ -1,0 +1,8 @@
+.article {
+	h1 {
+		@extend .h1;
+	}
+	p {
+		@extend .p;
+	}
+}

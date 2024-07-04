@@ -4,7 +4,7 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-const swiper = new Swiper('.card__slider', {
+const swiper = new Swiper('.slider', {
 	modules: [Pagination],
 	loop: true,
 	pagination: {

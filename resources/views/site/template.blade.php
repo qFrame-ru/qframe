@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>qFrame</title>
+    <title>@yield('title', 'кьюФрейм')</title>
 	<link rel="stylesheet" href="{{ route('css-palette', time()) }}">
     @vite('resources/sass/app.scss')
 </head>
@@ -11,11 +11,21 @@
 <div class="container">
 
 	<header class="header">
-	    <img
-		    class="header__logo"
-		    src="https://placehold.co/328x80/52BD31/FFF?text=Логотип"
-		    alt="Логотип компании"
-	    >
+		@if (Route::currentRouteName() == 'index')
+			<img
+				class="header__logo"
+				src="https://placehold.co/328x80/52BD31/FFF?text=Логотип"
+				alt="Логотип компании"
+			>
+		@else
+			<a href="{{ route('index') }}">
+				<img
+					class="header__logo"
+					src="https://placehold.co/328x80/52BD31/FFF?text=Логотип"
+					alt="Логотип компании"
+				>
+			</a>
+		@endif
 	</header>
 
 	<main class="content">

@@ -16,6 +16,15 @@ class SiteController extends Controller
     }
 
 	/**
+	 * Объект
+	 *
+	 * @return View
+	 */
+	public function item():View {
+		return view('site.item');
+	}
+
+	/**
 	 * Файл CSS-палитры
 	 *
 	 * @return Response

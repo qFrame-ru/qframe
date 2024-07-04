@@ -1,0 +1,11 @@
+.slider {
+	overflow: hidden;
+	position: relative;
+
+	&_negative {
+		margin: {
+			left: -16rem;
+			right: -16rem;
+		};
+	}
+}
