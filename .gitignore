@@ -2,6 +2,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/i
+/resources/sass/palette.css
 /storage/*.key
 /vendor
 .env

@@ -1,39 +1,29 @@
-<a href="{{ route('item') }}" class="card">
+<a href="{{ route('item', $item) }}" class="card">
 
-	<span class="slider">
-		<span class="swiper-wrapper">
-			<span class="swiper-slide">
-				<img src="https://placehold.co/328x192/D0E1CA/FFF?text=Раз">
+	@if ($item->hasImages())
+		<span class="slider slider_negative">
+			<span class="swiper-wrapper">
+				@for ($i = 1; $i <= $item->getImagesCount(); $i++)
+					<span class="swiper-slide">
+						<img src="{{ asset('i/' . $item->id . '/' . $i . '.webp') }}">
+					</span>
+				@endfor
 			</span>
-			<span class="swiper-slide">
-				<img src="https://placehold.co/328x192/CAD7E1/FFF?text=Два">
-			</span>
-			<span class="swiper-slide">
-				<img src="https://placehold.co/328x192/E1CACB/FFF?text=Три">
-			</span>
+			<span class="swiper-pagination"></span>
 		</span>
-		<span class="swiper-pagination"></span>
-	</span>
+	@endif
 
 	<span class="item-data card__data">
-		<span class="item-data__title">Двухэтажный дом в Новинках</span>
-		<span class="item-data__params">
-			<span class="item-data__param">
-				<span class="item-data__param-label">Стоимость</span>
-				<span class="item-data__param-value">от 35 000 000 р.</span>
+		<span class="item-data__title">{{ $item->name }}</span>
+		@if ($item->hasProperties())
+			<span class="item-data__params">
+				@foreach($item->getPropertiesWithValues() as $property)
+					<span class="item-data__param">
+						<span class="item-data__param-label">{{ $property['name'] }}</span>
+						<span class="item-data__param-value">{{ $property['value'] }}</span>
+					</span>
+				@endforeach
 			</span>
-			<span class="item-data__param">
-				<span class="item-data__param-label">Срок постройки</span>
-				<span class="item-data__param-value">6–12 месяцев</span>
-			</span>
-			<span class="item-data__param">
-				<span class="item-data__param-label">Площадь</span>
-				<span class="item-data__param-value">300 кв. м.</span>
-			</span>
-			<span class="item-data__param">
-				<span class="item-data__param-label">Этажность</span>
-				<span class="item-data__param-value">2</span>
-			</span>
-		</span>
+		@endif
 	</span>
 </a>

@@ -1,52 +1,41 @@
 @extends('site.template')
 
-@section('title', 'Двухэтажный дом в Новинках')
+@section('title', $item->name)
 @section('content')
 
-	<h1 class="h1">Двухэтажный дом в&nbsp;Новинках</h1>
+	<h1 class="h1">{{ $item->name }}</h1>
 
-	<div class="slider slider_negative">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<img src="https://placehold.co/360x200/D0E1CA/FFF?text=Раз">
+	@if ($item->hasImages())
+		<div class="slider slider_negative">
+			<div class="swiper-wrapper">
+				@for ($i = 1; $i <= $item->getImagesCount(); $i++)
+					<div class="swiper-slide">
+						<img src="{{ asset('i/' . $item->id . '/' . $i . '.webp') }}">
+					</div>
+				@endfor
 			</div>
-			<div class="swiper-slide">
-				<img src="https://placehold.co/360x200/CAD7E1/FFF?text=Два">
-			</div>
-			<div class="swiper-slide">
-				<img src="https://placehold.co/360x200/E1CACB/FFF?text=Три">
+			<div class="swiper-pagination"></div>
+		</div>
+	@endif
+
+	@if ($item->hasProperties())
+		<div class="item-data">
+			<div class="item-data__params">
+				@foreach($item->getPropertiesWithValues() as $property)
+					<div class="item-data__param">
+						<div class="item-data__param-label">{{ $property['name'] }}</div>
+						<div class="item-data__param-value">{{ $property['value'] }}</div>
+					</div>
+				@endforeach
 			</div>
 		</div>
-		<div class="swiper-pagination"></div>
-	</div>
+	@endif
 
-	<div class="item-data">
-		<div class="item-data__params">
-			<div class="item-data__param">
-				<div class="item-data__param-label">Стоимость</div>
-				<div class="item-data__param-value">от 35 000 000 р.</div>
-			</div>
-			<div class="item-data__param">
-				<div class="item-data__param-label">Срок постройки</div>
-				<div class="item-data__param-value">6–12 месяцев</div>
-			</div>
-			<div class="item-data__param">
-				<div class="item-data__param-label">Площадь</div>
-				<div class="item-data__param-value">300 кв. м.</div>
-			</div>
-			<div class="item-data__param">
-				<div class="item-data__param-label">Этажность</div>
-				<div class="item-data__param-value">2</div>
-			</div>
-		</div>
-	</div>
-
+	@if ($item->description)
 	<section class="article">
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-			magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat.</p>
-		<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-			sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		@php($description = str_replace("\n", '</p><p>', $item->description))
+		<p>{!! $description !!}</p>
 	</section>
+	@endif
 
 @stop

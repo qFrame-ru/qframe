@@ -14,14 +14,14 @@
 		@if (Route::currentRouteName() == 'index')
 			<img
 				class="header__logo"
-				src="https://placehold.co/328x80/52BD31/FFF?text=Логотип"
+				src="{{ asset('i/logo.webp') }}"
 				alt="Логотип компании"
 			>
 		@else
 			<a href="{{ route('index') }}">
 				<img
 					class="header__logo"
-					src="https://placehold.co/328x80/52BD31/FFF?text=Логотип"
+					src="{{ asset('i/logo.webp') }}"
 					alt="Логотип компании"
 				>
 			</a>
@@ -33,13 +33,13 @@
 	</main>
 
 	<div class="contacts">
-		<a href="tel:+79000000000" class="contacts__phone">+7 900 000-00-00</a>
-		<div class="contacts__address">Санкт-Петербург, Невский проспект, д. 107, оф.&nbsp;309</div>
-		<div class="contacts__schedule">Пн-пт, с 9:00 до 18:00</div>
+		<a href="tel:{{ env('SITE_CONTACTS_PHONE_VALUE') }}" class="contacts__phone">{{ env('SITE_CONTACTS_PHONE_TITLE') }}</a>
+		<div class="contacts__address">{{ env('SITE_CONTACTS_ADDRESS') }}</div>
+		<div class="contacts__schedule">{{ env('SITE_CONTACTS_SCHEDULE') }}</div>
 	</div>
 
 	<footer class="footer">
-	    <p>© {{ date('Y') }} Компания</p>
+	    <p>© {{ date('Y') }} {{ env('SITE_COMPANY_NAME') }}</p>
 	    <p>Сайт работает на <a href="https://qframe.ru" target="_blank">платформе «кьюФрейм»</a></p>
 	</footer>
 

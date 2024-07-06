@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 const swiper = new Swiper('.slider', {
 	modules: [Pagination],
 	loop: true,
+	autoHeight: true,
 	pagination: {
 		el: '.swiper-pagination',
 		clickable: true

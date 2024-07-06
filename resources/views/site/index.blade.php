@@ -1,10 +1,10 @@
 @extends('site.template')
 
-@section('title', 'Строим дома')
+@section('title', env('SITE_INDEX_TITLE'))
 @section('content')
 	<h1 class="h1">Дома, которые мы построили</h1>
 
-	@for($i = 0; $i < 5; $i++)
+	@foreach($items as $item)
 		@include('site.components.card')
-	@endfor
+	@endforeach
 @stop
