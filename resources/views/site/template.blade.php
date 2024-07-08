@@ -15,14 +15,14 @@
 			<img
 				class="header__logo"
 				src="{{ asset('i/logo.webp') }}"
-				alt="Логотип компании"
+				alt="{{ env('SITE_COMPANY_NAME') }}"
 			>
 		@else
 			<a href="{{ route('index') }}">
 				<img
 					class="header__logo"
 					src="{{ asset('i/logo.webp') }}"
-					alt="Логотип компании"
+					alt="{{ env('SITE_COMPANY_NAME') }}"
 				>
 			</a>
 		@endif
