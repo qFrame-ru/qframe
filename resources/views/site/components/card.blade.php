@@ -1,7 +1,7 @@
 <a href="{{ route('item', $item) }}" class="card">
 
 	@if ($item->hasImages())
-		<span class="slider slider_negative">
+		<span class="slider">
 			<span class="swiper-wrapper">
 				@for ($i = 1; $i <= $item->getImagesCount(); $i++)
 					<span class="swiper-slide">
