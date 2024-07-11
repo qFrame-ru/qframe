@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'кьюФрейм')</title>
 	<link rel="stylesheet" href="{{ route('css-palette', time()) }}">
-    @vite('resources/sass/app.scss')
+    @vite('resources/sass/site/app.scss')
 </head>
 <body class="body">
 <div class="container">
@@ -45,6 +45,6 @@
 
 </div>
 
-@vite('resources/js/app.js')
+@vite('resources/js/site/app.js')
 </body>
 </html>

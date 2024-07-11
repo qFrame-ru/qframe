@@ -3,7 +3,7 @@
 /public/hot
 /public/storage
 /public/i
-/resources/sass/palette.css
+/resources/sass/site/palette.css
 /storage/*.key
 /vendor
 .env

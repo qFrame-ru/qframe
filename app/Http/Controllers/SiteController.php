@@ -36,7 +36,7 @@ class SiteController extends Controller
 	 * @return Response
 	 */
 	public function cssPalette():Response {
-		$palette_filename = resource_path('sass/palette.css');
+		$palette_filename = resource_path('sass/site/palette.css');
 		$content = file_get_contents($palette_filename);
 
 		return response($content)
