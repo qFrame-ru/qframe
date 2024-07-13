@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'кьюФрейм')</title>
-	<link rel="stylesheet" href="{{ route('css-palette', time()) }}">
+	<link rel="stylesheet" href="{{ route('site.css-palette', time()) }}">
     @vite('resources/sass/site/app.scss')
 </head>
 <body class="body">
@@ -18,7 +18,7 @@
 				alt="{{ env('SITE_COMPANY_NAME') }}"
 			>
 		@else
-			<a href="{{ route('index') }}">
+			<a href="{{ route('site.index') }}">
 				<img
 					class="header__logo"
 					src="{{ asset('i/logo.webp') }}"

@@ -1,4 +1,4 @@
-<a href="{{ route('item', $item) }}" class="card">
+<a href="{{ route('site.item', $item) }}" class="card">
 
 	@if ($item->hasImages())
 		<span class="slider">

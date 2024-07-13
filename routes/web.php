@@ -6,9 +6,19 @@ use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\Admin\CheckAuth;
 
-Route::get('/', [SiteController::class, 'index'])->name('index');
-Route::get('item/{item}', [SiteController::class, 'item'])->name('item');
-Route::get('palette/{hash}.css', [SiteController::class, 'cssPalette'])->name('css-palette');
+// Сайт
+Route::name('site.')->group(function() {
+
+	// Главная страница
+	Route::get('/', [SiteController::class, 'index'])->name('index');
+
+	// Объект
+	Route::get('item/{item}', [SiteController::class, 'item'])->name('item');
+
+	// Палитра
+	Route::get('palette/{hash}.css', [SiteController::class, 'cssPalette'])->name('css-palette');
+
+});
 
 // Админка
 Route::prefix('admin')->name('admin.')->group(function() {

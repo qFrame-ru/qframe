@@ -1,1 +1,11 @@
 @use "bulma";
+@use "../fa/solid.css";
+@use "../fa/brands.css";
+@use "../fa/fontawesome.css";
+
+html {
+	height: 100%;
+}
+body {
+	min-height: 100%;
+}
