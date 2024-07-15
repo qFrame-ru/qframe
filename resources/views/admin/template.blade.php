@@ -3,8 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>@yield('title', 'Админцентр')</title>
+	<title>{{ $title ?? 'Админцентр' }}</title>
 	@vite('resources/sass/admin/app.scss')
+	@livewireStyles
 </head>
 <body class="is-flex is-flex-direction-column">
 
@@ -106,7 +107,7 @@
 {{--Контент--}}
 <section class="section is-flex-grow-1">
 	<div class="container">
-		@yield('content')
+		{{ $slot }}
 	</div>
 </section>
 
@@ -168,5 +169,6 @@
 
 </footer>
 
+@livewireScripts
 </body>
 </html>

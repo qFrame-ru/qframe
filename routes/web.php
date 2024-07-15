@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\Admin\CheckAuth;
+
+use App\Livewire\Items\Index as ItemIndex;
 
 // Сайт
 Route::name('site.')->group(function() {
@@ -32,7 +33,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
 		// Объекты
 		Route::prefix('items')->name('items.')->group(function() {
-			Route::get('/', [ItemController::class, 'index'])->name('index');
+			Route::get('/', ItemIndex::class)->name('index');
 		});
 	});
 

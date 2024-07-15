@@ -1,5 +1,3 @@
-@extends('admin.template')
-
-@section('title', 'Объекты')
-@section('content')
-@stop
+<div>
+    {{-- In work, do what you enjoy. --}}
+</div>
