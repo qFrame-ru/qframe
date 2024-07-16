@@ -3,7 +3,11 @@
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\CheckAdminAuth;
-use App\Livewire\Items\Index as ItemIndex;
+use App\Admin\Account;
+use App\Admin\Contacts;
+use App\Admin\Design;
+use App\Admin\Items\Index as ItemIndex;
+use App\Admin\Properties\Index as PropertiesIndex;
 use Illuminate\Support\Facades\Route;
 
 // Сайт
@@ -32,8 +36,28 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
 		// Объекты
 		Route::prefix('items')->name('items.')->group(function() {
+
+			// Список объектов
 			Route::get('/', ItemIndex::class)->name('index');
+
 		});
+
+		// Свойства
+		Route::prefix('properties')->name('properties.')->group(function() {
+
+			// Список свойств
+			Route::get('/', PropertiesIndex::class)->name('index');
+
+		});
+
+		// Контакты
+		Route::get('contacts', Contacts::class)->name('contacts');
+
+		// Дизайн
+		Route::get('design', Design::class)->name('design');
+
+		// Аккаунт
+		Route::get('account', Account::class)->name('account');
 	});
 
 	// Аутентификация

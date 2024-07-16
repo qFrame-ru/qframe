@@ -14,9 +14,15 @@
 
 	{{--Логотип и кнопка-бургер--}}
 	<div class="navbar-brand">
-		<a class="navbar-item" href="{{ route('admin.index') }}">
-			<img src="{{ asset('a/i/logo_full.svg') }}">
-		</a>
+		@if(Route::is('admin.index'))
+			<span class="navbar-item">
+				<img src="{{ asset('a/i/logo_full.svg') }}">
+			</span>
+		@else
+			<a class="navbar-item" href="{{ route('admin.index') }}" wire:navigate>
+				<img src="{{ asset('a/i/logo_full.svg') }}">
+			</a>
+		@endif
 		<a role="button" class="navbar-burger" data-target="navbarMenu">
 			<span></span>
 			<span></span>
@@ -30,23 +36,13 @@
 
 		{{--Левая часть--}}
 		<div class="navbar-start">
-
-			{{--Каталог--}}
-			<div class="navbar-item has-dropdown is-hoverable">
-				<a class="navbar-link">Каталог</a>
-
-				<div class="navbar-dropdown">
-					<a class="navbar-item">Объекты</a>
-					<a class="navbar-item">Параметры</a>
-				</div>
-			</div>
-
-			{{--Контакты--}}
-			<a class="navbar-item">Контакты</a>
-
-			{{--Дизайн--}}
-			<a class="navbar-item">Дизайн</a>
-
+			@foreach($menu as $title => $value)
+				@if (is_array($value))
+					<livewire:components.nav.dropdown title="{{ $title }}" :items="$value" />
+				@else
+					<livewire:components.nav.item route="{{ $value }}" title="{{ $title }}" />
+				@endif
+			@endforeach
 		</div>
 
 		{{--Правая часть--}}
@@ -69,7 +65,12 @@
 
 						{{--Профиль--}}
 						<p class="control">
-							<a href="#" class="button is-light">
+							<a
+								class="button is-light"
+								href="{{ route('admin.account') }}"
+								@disabled(Route::is('admin.account'))
+								wire:navigate
+							>
 								<span class="icon-text">
 									<span class="icon">
 										<i class="fas fa-user"></i>
@@ -106,9 +107,7 @@
 
 {{--Контент--}}
 <section class="section is-flex-grow-1">
-	<div class="container">
-		{{ $slot }}
-	</div>
+	<div class="container">{{ $slot }}</div>
 </section>
 
 {{--Футер--}}
