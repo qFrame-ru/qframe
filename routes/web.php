@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\SiteController;
-use App\Http\Middleware\Admin\CheckAuth;
-
+use App\Http\Middleware\CheckAdminAuth;
 use App\Livewire\Items\Index as ItemIndex;
+use Illuminate\Support\Facades\Route;
 
 // Сайт
 Route::name('site.')->group(function() {
@@ -24,7 +23,7 @@ Route::name('site.')->group(function() {
 // Админка
 Route::prefix('admin')->name('admin.')->group(function() {
 
-	Route::middleware(CheckAuth::class)->group(function() {
+	Route::middleware(CheckAdminAuth::class)->group(function() {
 
 		// Главная страница
 		Route::get('/', function() {
@@ -41,13 +40,13 @@ Route::prefix('admin')->name('admin.')->group(function() {
 	Route::prefix('auth')->name('auth.')->group(function() {
 
 		// Страница входа
-		Route::get('login', [AuthController::class, 'loginForm'])->name('form');
+		Route::get('login', [AdminAuthController::class, 'loginForm'])->name('form');
 
 		// Вход
-		Route::post('login', [AuthController::class, 'login'])->name('login');
+		Route::post('login', [AdminAuthController::class, 'login'])->name('login');
 
 		// Выход
-		Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+		Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
 
 	});
 

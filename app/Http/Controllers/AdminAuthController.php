@@ -1,12 +1,11 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class AuthController extends Controller
+class AdminAuthController extends Controller
 {
 	/**
 	 * Форма входа
@@ -14,7 +13,7 @@ class AuthController extends Controller
 	 * @return View
 	 */
     public function loginForm():View {
-		return view('admin.login');
+		return view('admin.login-form');
     }
 
 	/**
@@ -29,7 +28,7 @@ class AuthController extends Controller
 			'password' => ['required']
 		]);
 
-		if (Auth::attempt($credentials)) {
+		if (Auth::attempt($credentials, true)) {
 			$request->session()->regenerate();
 			$default_route = route('admin.index');
 
