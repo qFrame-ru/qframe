@@ -1,7 +1,15 @@
-@use "bulma";
 @use "../fa/solid.css";
 @use "../fa/brands.css";
 @use "../fa/fontawesome.css";
+
+$color-brand: #52BD31;
+
+// TODO Придумать, как перекрашивать без компиляций по 20 секунд
+//@use "bulma/sass" with (
+//	$primary: $color-brand,
+//	$link: $color-brand
+//);
+@use "bulma";
 
 html {
 	height: 100%;
