@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ $title ?? 'Админцентр' }} — кьюФрейм</title>
+	<link rel="shortcut icon" href="{{ asset('a/i/logo_sign.svg') }}">
 	@vite('resources/sass/admin/app.scss')
 	@livewireStyles
 </head>
