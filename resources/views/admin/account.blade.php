@@ -15,9 +15,7 @@
 				wire:model="email"
 			>
 		</div>
-		@error('email')
-			<livewire:components.notification error :message="$message" />
-		@enderror
+		<x-admin.notifications.error field="email"/>
 	</div>
 
 	{{--Пароль--}}
@@ -32,13 +30,13 @@
 				wire:model="password"
 			>
 		</div>
-		@error('password')
-			<livewire:components.notification error :message="$message" />
-		@enderror
+		<x-admin.notifications.error field="password"/>
 	</div>
 
+	{{--Кнопка--}}
 	<button
 		type="submit"
-		class="button is-primary">Сохранить</button>
+		class="button is-primary"
+	>Сохранить</button>
 
 </form>
