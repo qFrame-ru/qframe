@@ -17,3 +17,11 @@ html {
 body {
 	min-height: 100%;
 }
+
+.draggable {
+	cursor:  grab;
+
+	&:active {
+		cursor: grabbing;
+	}
+}

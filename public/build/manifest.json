@@ -1,4 +1,10 @@
 {
+  "resources/js/admin/app.js": {
+    "file": "assets/app-DYv-D4FN.js",
+    "name": "app",
+    "src": "resources/js/admin/app.js",
+    "isEntry": true
+  },
   "resources/js/site/app.js": {
     "file": "assets/app-DgcnQzf7.js",
     "name": "app",
@@ -9,7 +15,7 @@
     ]
   },
   "resources/sass/admin/app.scss": {
-    "file": "assets/app-zB5W2Luq.css",
+    "file": "assets/app-Dk867DQ8.css",
     "src": "resources/sass/admin/app.scss",
     "isEntry": true
   },

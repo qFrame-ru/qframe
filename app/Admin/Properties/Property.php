@@ -1,0 +1,39 @@
+<?php namespace App\Admin\Properties;
+
+use Livewire\Attributes\Validate;
+use Livewire\Component;
+use App\Models\Property as PropertyModel;
+
+class Property extends Component
+{
+	public PropertyModel $property;
+
+	#[Validate('required', message: 'Необходмо указать название свойства')]
+	public string $name;
+
+	public function mount(PropertyModel $property) {
+		$this->property = $property;
+		$this->name = $property->name;
+	}
+
+	/**
+	 * Обновление
+	 *
+	 * @return void
+	 */
+	public function update():void {
+		$this->validate();
+		$this->property->name = trim($this->name);
+		$this->property->save();
+	}
+
+	/**
+	 * Удаление
+	 *
+	 * @return void
+	 */
+	public function delete():void {
+		$this->property->delete();
+		$this->dispatch('properties-updated');
+	}
+}

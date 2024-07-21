@@ -53,12 +53,7 @@
 
 					{{--Ссылка на сайт--}}
 					<a class="button is-primary" href="{{ route('site.index') }}" target="_blank">
-						<span class="icon-text">
-							<span class="icon">
-								<i class="fas fa-arrow-up-right-from-square"></i>
-							</span>
-							<span>Сайт</span>
-						</span>
+						<x-admin.icon icon="arrow-up-right-from-square" text="Сайт"/>
 					</a>
 
 					{{--Аккаунт--}}
@@ -72,12 +67,7 @@
 								@disabled(Route::is('admin.account'))
 								wire:navigate
 							>
-								<span class="icon-text">
-									<span class="icon">
-										<i class="fas fa-user"></i>
-									</span>
-									<span>Аккаунт</span>
-								</span>
+								<x-admin.icon icon="user" text="Аккаунт"/>
 							</a>
 						</p>
 
@@ -87,12 +77,7 @@
 						{{--Выход--}}
 						<p class="control">
 							<button type="submit" class="button is-light">
-								<span class="icon-text">
-									<span class="icon">
-										<i class="fas fa-sign-out"></i>
-									</span>
-									<span>Выйти</span>
-								</span>
+								<x-admin.icon icon="sign-out" text="Выйти"/>
 							</button>
 						</p>
 
@@ -115,60 +100,41 @@
 <footer class="footer py-4 is-size-7 is-flex">
 
 	{{--Метка--}}
-	<span class="icon-text">
-		<span class="has-text-weight-bold">Связь с&nbsp;кьюФрейм</span>
-	</span>
+	<x-admin.icon bold text="Связь с кьюФрейм"/>
 
 	{{--Чат в Телеграме--}}
-	<a href="https://t.me/m/76kTC2bzZjcy" target="_blank" class="icon-text ml-4">
-		<span class="icon">
-			<i class="fa-brands fa-telegram"></i>
-		</span>
-		<span>Написать в&nbsp;Telegram</span>
+	<a href="https://t.me/m/76kTC2bzZjcy" target="_blank" class="ml-4 has-text-text">
+		<x-admin.icon icon="telegram" collection="fa-brands" text="Написать в Telegram"/>
 	</a>
 
 	{{--Канал в Телеграме--}}
-	<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="icon-text ml-4">
-		<span class="icon">
-			<i class="fa-brands fa-telegram"></i>
-		</span>
-		<span>Канал в&nbsp;Telegram</span>
+	<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="ml-4 has-text-text">
+		<x-admin.icon icon="telegram" collection="fa-brands" text="Канал в Telegram"/>
 	</a>
 
 	{{--Группа в VK--}}
-	<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="icon-text ml-4">
-		<span class="icon">
-			<i class="fa-brands fa-vk"></i>
-		</span>
-		<span>Группа в&nbsp;VK</span>
+	<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="ml-4 has-text-text">
+		<x-admin.icon icon="vk" collection="fa-brands" text="Группа в VK"/>
 	</a>
 
 	{{--Сайт--}}
-	<a href="https://qframe.ru" target="_blank" class="icon-text ml-4">
-		<span class="icon">
-			<i class="fas fa-arrow-up-right-from-square"></i>
-		</span>
-		<span>Сайт</span>
+	<a href="https://qframe.ru" target="_blank" class="ml-4 has-text-text">
+		<x-admin.icon icon="arrow-up-right-from-square" text="Сайт"/>
 	</a>
 
 	{{--Электронная почта--}}
-	<a href="mailto:qframe.ru@ya.ru" target="_blank" class="icon-text ml-4">
-		<span class="icon">
-			<i class="fas fa-envelope"></i>
-		</span>
-		<span>qframe.ru@ya.ru</span>
+	<a href="mailto:qframe.ru@ya.ru" target="_blank" class="ml-4 has-text-text">
+		<x-admin.icon icon="envelope" text="qframe.ru@ya.ru"/>
 	</a>
 
 	{{--Позвонить--}}
-	<a href="tel:+79953336025" target="_blank" class="icon-text ml-4">
-		<span class="icon">
-			<i class="fas fa-phone"></i>
-		</span>
-		<span>+7&nbsp;995&nbsp;333&nbsp;60&nbsp;25</span>
+	<a href="tel:+79953336025" target="_blank" class="ml-4 has-text-text">
+		<x-admin.icon icon="phone" text="+7 995 333 60 25"/>
 	</a>
 
 </footer>
 
-@livewireScripts
+@vite('resources/js/admin/app.js')
+@livewireScriptConfig
 </body>
 </html>
