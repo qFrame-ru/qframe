@@ -1,13 +1,13 @@
 <?php
 
+use App\Admin\Account;
+use App\Admin\Contacts\Index as ContactsIndex;
+use App\Admin\Design;
+use App\Admin\Items\Index as ItemsIndex;
+use App\Admin\Properties\Index as PropertiesIndex;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\CheckAdminAuth;
-use App\Admin\Account;
-use App\Admin\Contacts;
-use App\Admin\Design;
-use App\Admin\Items\Index as ItemIndex;
-use App\Admin\Properties\Index as PropertiesIndex;
 use Illuminate\Support\Facades\Route;
 
 // Сайт
@@ -38,20 +38,15 @@ Route::prefix('admin')->name('admin.')->group(function() {
 		Route::prefix('items')->name('items.')->group(function() {
 
 			// Список объектов
-			Route::get('/', ItemIndex::class)->name('index');
+			Route::get('/', ItemsIndex::class)->name('index');
 
 		});
 
 		// Свойства
-		Route::prefix('properties')->name('properties.')->group(function() {
-
-			// Список свойств
-			Route::get('/', PropertiesIndex::class)->name('index');
-
-		});
+		Route::get('properties', PropertiesIndex::class)->name('properties');
 
 		// Контакты
-		Route::get('contacts', Contacts::class)->name('contacts');
+		Route::get('contacts', ContactsIndex::class)->name('contacts');
 
 		// Дизайн
 		Route::get('design', Design::class)->name('design');
