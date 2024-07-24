@@ -1,8 +1,12 @@
 @extends('site.template')
 
-@section('title', env('SITE_INDEX_TITLE'))
+@section('title', \App\Models\Metatag::getValue(\App\Models\Metatag::TYPE_HOME_TITLE))
+@section('description', \App\Models\Metatag::getValue(\App\Models\Metatag::TYPE_HOME_DESCRIPTION))
+@section('keywords', \App\Models\Metatag::getValue(\App\Models\Metatag::TYPE_HOME_KEYWORDS))
 @section('content')
-	<h1 class="h1">{{ env('SITE_INDEX_H1') }}</h1>
+	@if(\App\Models\Metatag::hasValue(\App\Models\Metatag::TYPE_HOME_H1))
+		<h1 class="h1">{{ \App\Models\Metatag::getValue(\App\Models\Metatag::TYPE_HOME_H1) }}</h1>
+	@endif
 
 	@foreach($items as $item)
 		@include('site.components.card')

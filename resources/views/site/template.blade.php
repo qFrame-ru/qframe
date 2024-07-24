@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('title', 'кьюФрейм')</title>
+	<meta name="description" content="@yield('description', '')">
+	<meta name="keywords" content="@yield('keywords', '')">
 	<link rel="stylesheet" href="{{ route('site.css-palette', time()) }}">
 	@vite('resources/sass/site/app.scss')
 </head>
@@ -15,14 +17,14 @@
 			<img
 				class="header__logo"
 				src="{{ asset('i/logo.webp') }}"
-				alt="{{ env('SITE_COMPANY_NAME') }}"
+				alt="{{ \App\Models\Contact::getValue(\App\Models\Contact::TYPE_COMPANY_NAME) }}"
 			>
 		@else
 			<a href="{{ route('site.index') }}">
 				<img
 					class="header__logo"
 					src="{{ asset('i/logo.webp') }}"
-					alt="{{ env('SITE_COMPANY_NAME') }}"
+					alt="{{ \App\Models\Contact::getValue(\App\Models\Contact::TYPE_COMPANY_NAME) }}"
 				>
 			</a>
 		@endif

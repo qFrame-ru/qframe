@@ -1,19 +1,19 @@
-<?php namespace App\Admin\Contacts;
+<?php namespace App\Admin\Metatags;
 
-use App\Models\Contact as ContactModel;
+use App\Models\Metatag as MetatagModel;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class Contact extends Component
+class Metatag extends Component
 {
-	public ContactModel $contact;
+	public MetatagModel $metatag;
 	public string $type = '';
 	public string|NULL $value = '';
 
 	public function mount($type):void {
-		$this->contact = ContactModel::get($type);
+		$this->metatag = MetatagModel::get($type);
 		$this->type = $type;
-		$this->value = $this->contact->value;
+		$this->value = $this->metatag->value;
 	}
 
 	/**
@@ -21,11 +21,11 @@ class Contact extends Component
 	 *
 	 * @return void
 	 */
-	#[On('contacts-updated')]
+	#[On('metatags-updated')]
 	public function update():void {
 		$value = trim($this->value);
 		$this->value = mb_strlen($value) ? $value : NULL;
-		$this->contact->value = $this->value;
-		$this->contact->save();
+		$this->metatag->value = $this->value;
+		$this->metatag->save();
 	}
 }

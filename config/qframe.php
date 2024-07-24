@@ -12,6 +12,7 @@ return [
 				'Свойства' => 'admin.properties'
 			],
 			'Контакты' => 'admin.contacts',
+			'Метатеги' => 'admin.metatags',
 			'Дизайн' => 'admin.design'
 		]
 	]

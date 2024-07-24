@@ -4,6 +4,7 @@ use App\Admin\Account;
 use App\Admin\Contacts\Index as ContactsIndex;
 use App\Admin\Design;
 use App\Admin\Items\Index as ItemsIndex;
+use App\Admin\Metatags\Index as MetatagsIndex;
 use App\Admin\Properties\Index as PropertiesIndex;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\SiteController;
@@ -47,6 +48,9 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
 		// Контакты
 		Route::get('contacts', ContactsIndex::class)->name('contacts');
+
+		// Метатеги
+		Route::get('metatags', MetatagsIndex::class)->name('metatags');
 
 		// Дизайн
 		Route::get('design', Design::class)->name('design');
