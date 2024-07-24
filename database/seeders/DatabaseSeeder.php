@@ -9,7 +9,8 @@ class DatabaseSeeder extends Seeder
 		$this->call([
 			UserSeeder::class,
 			ContactSeeder::class,
-			MetatagSeeder::class
+			MetatagSeeder::class,
+			ColorSeeder::class
 		]);
 	}
 }

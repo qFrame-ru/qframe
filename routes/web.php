@@ -2,7 +2,7 @@
 
 use App\Admin\Account;
 use App\Admin\Contacts\Index as ContactsIndex;
-use App\Admin\Design;
+use App\Admin\Design\Index;
 use App\Admin\Items\Index as ItemsIndex;
 use App\Admin\Metatags\Index as MetatagsIndex;
 use App\Admin\Properties\Index as PropertiesIndex;
@@ -53,7 +53,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
 		Route::get('metatags', MetatagsIndex::class)->name('metatags');
 
 		// Дизайн
-		Route::get('design', Design::class)->name('design');
+		Route::get('design', Index::class)->name('design');
 
 		// Аккаунт
 		Route::get('account', Account::class)->name('account');

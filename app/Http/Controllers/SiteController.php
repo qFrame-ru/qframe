@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Color;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -36,10 +37,16 @@ class SiteController extends Controller
 	 * @return Response
 	 */
 	public function cssPalette():Response {
-		$palette_filename = resource_path('sass/site/palette.css');
-		$content = file_get_contents($palette_filename);
+		$css = '';
 
-		return response($content)
+		$colors = Color::all();
+		foreach ($colors as $color) {
+			$css .= '--color-' . $color->name . ': ' . $color->hex . ';';
+		}
+
+		$css = ':root {' . $css . '}';
+
+		return response($css)
 			->header('Content-Type', 'text/css');
 	}
 }
