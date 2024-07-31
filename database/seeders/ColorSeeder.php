@@ -10,9 +10,10 @@ class ColorSeeder extends Seeder
 		$colors = [
 			'accent'            => '#52BD31',
 			'accent-swipe'      => '#6CD84B',
-			'text'              => '#222222',
 			'stroke'            => '#EEEEEE',
+			'page-text'         => '#222222',
 			'page-background'   => '#F9F9F9',
+			'card-text'         => '#222222',
 			'card-background'   => '#FFFFFF',
 			'slider-bullet'     => '#FFFFFF'
 		];

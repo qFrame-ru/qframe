@@ -34,9 +34,6 @@
 	</div>
 
 	{{--Кнопка--}}
-	<button
-		type="submit"
-		class="button is-primary"
-	>Сохранить</button>
+	<x-admin.inputs.submit/>
 
 </form>

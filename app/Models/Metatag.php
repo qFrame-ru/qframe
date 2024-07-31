@@ -18,7 +18,6 @@ class Metatag extends Model
 	 * Получить тег
 	 *
 	 * @param string $type
-	 *
 	 * @return static
 	 */
 	public static function get(string $type):static {
@@ -29,7 +28,6 @@ class Metatag extends Model
 	 * Есть значение у тега
 	 *
 	 * @param string $type
-	 *
 	 * @return bool
 	 */
 	public static function hasValue(string $type):bool {
@@ -41,7 +39,6 @@ class Metatag extends Model
 	 * Получить значение
 	 *
 	 * @param string $type
-	 *
 	 * @return string|NULL
 	 */
 	public static function getValue(string $type):string|NULL {

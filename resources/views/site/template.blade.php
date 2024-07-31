@@ -6,6 +6,9 @@
 	<title>@yield('title', 'кьюФрейм')</title>
 	<meta name="description" content="@yield('description', '')">
 	<meta name="keywords" content="@yield('keywords', '')">
+	@if(\App\Models\Logo::hasFaviconMedia())
+		<link rel="icon" href="{{ \App\Models\Logo::getFaviconUrl() }}">
+	@endif
 	<link rel="stylesheet" href="{{ route('site.css-palette', time()) }}">
 	@vite('resources/sass/site/app.scss')
 </head>

@@ -25,12 +25,7 @@
 
 			{{--Кнопка--}}
 			<div class="control">
-				<button
-					type="submit"
-					class="button is-primary"
-				>
-					<x-admin.icon icon="plus" text="Добавить"/>
-				</button>
+				<x-admin.inputs.submit icon="plus" text="Добавить"/>
 			</div>
 
 		</div>

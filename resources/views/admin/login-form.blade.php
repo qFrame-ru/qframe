@@ -33,7 +33,7 @@
 					{{--Кнопка--}}
 					<div class="field">
 						<div class="control">
-							<button type="submit" class="button is-primary">Войти</button>
+							<x-admin.inputs.submit text="Войти"/>
 						</div>
 					</div>
 

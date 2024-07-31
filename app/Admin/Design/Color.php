@@ -20,7 +20,7 @@ class Color extends Component
 	 *
 	 * @return void
 	 */
-	#[On('design-updated')]
+	#[On('design-colors-updated')]
 	public function update():void {
 		$this->color->hex = $this->hex;
 		$this->color->save();
