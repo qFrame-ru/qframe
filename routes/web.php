@@ -1,11 +1,13 @@
 <?php
 
 use App\Admin\Account;
-use App\Admin\Contacts\Index as ContactsIndex;
-use App\Admin\Design\Index;
-use App\Admin\Items\Index as ItemsIndex;
-use App\Admin\Metatags\Index as MetatagsIndex;
-use App\Admin\Properties\Index as PropertiesIndex;
+use App\Admin\Contacts\Index as ContactIndex;
+use App\Admin\Design\Index as DesignIndex;
+use App\Admin\Items\Index as ItemIndex;
+use App\Admin\Items\Create as ItemCreate;
+use App\Admin\Items\Edit as ItemEdit;
+use App\Admin\Metatags\Index as MetatagIndex;
+use App\Admin\Properties\Index as PropertyIndex;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\CheckAdminAuth;
@@ -39,21 +41,25 @@ Route::prefix('admin')->name('admin.')->group(function() {
 		Route::prefix('items')->name('items.')->group(function() {
 
 			// Список объектов
-			Route::get('/', ItemsIndex::class)->name('index');
+			Route::get('/', ItemIndex::class)->name('index');
+
+			Route::get('create', ItemCreate::class)->name('create');
+
+			Route::get('edit/{item}', ItemEdit::class)->name('edit');
 
 		});
 
 		// Свойства
-		Route::get('properties', PropertiesIndex::class)->name('properties');
+		Route::get('properties', PropertyIndex::class)->name('properties');
 
 		// Контакты
-		Route::get('contacts', ContactsIndex::class)->name('contacts');
+		Route::get('contacts', ContactIndex::class)->name('contacts');
 
 		// Метатеги
-		Route::get('metatags', MetatagsIndex::class)->name('metatags');
+		Route::get('metatags', MetatagIndex::class)->name('metatags');
 
 		// Дизайн
-		Route::get('design', Index::class)->name('design');
+		Route::get('design', DesignIndex::class)->name('design');
 
 		// Аккаунт
 		Route::get('account', Account::class)->name('account');

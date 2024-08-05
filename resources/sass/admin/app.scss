@@ -4,12 +4,18 @@
 
 $color-brand: #52BD31;
 
-// TODO Придумать, как перекрашивать без компиляций по 20 секунд
-//@use "bulma/sass" with (
-//	$primary: $color-brand,
-//	$link: $color-brand
-//);
 @use "bulma";
+:root {
+	--bulma-primary-h: 106deg;
+	--bulma-primary-s: 59%;
+	--bulma-primary-l: 47%;
+	--bulma-link-h: 106deg;
+	--bulma-link-s: 59%;
+	--bulma-link-l: 47%;
+	--bulma-danger-h: 0deg;
+	--bulma-danger-s: 90%;
+	--bulma-danger-l: 65%;
+}
 
 html {
 	height: 100%;

@@ -101,7 +101,7 @@ class Logo extends Model implements HasMedia
 	public function registerMediaConversions(?Media $media = null):void {
 		// Логотип
 		$this
-			->addMediaConversion('test')
+			->addMediaConversion(static::TYPE_LOGO)
 			->performOnCollections(static::TYPE_LOGO)
 			->width(984, [Constraint::PreserveAspectRatio])
 			->format('webp')

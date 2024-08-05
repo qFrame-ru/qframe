@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Nevadskiy\Position\HasPosition;
+use Spatie\Image\Enums\Constraint;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Item extends Model
+class Item extends Model implements HasMedia
 {
-	use HasFactory, HasPosition;
+	use HasFactory, HasPosition, InteractsWithMedia;
 
 	protected $fillable = ['name', 'description'];
 
@@ -20,6 +24,28 @@ class Item extends Model
 	 */
 	public function values():HasMany {
 		return $this->hasMany(Value::class);
+	}
+
+	/**
+	 * Добавление значения свойства
+	 *
+	 * @param Property|int $property
+	 * @param string|NULL $value
+	 * @return Value|NULL
+	 */
+	public function addValue(Property|int $property, string|NULL $value):Value|NULL {
+		$value = trim($value);
+
+		if (mb_strlen($value)) {
+			$property_id = is_int($property)
+				? $property
+				: $property->id;
+
+			$value_data = compact('property_id', 'value');
+			return $this->values()->create($value_data);
+		}
+
+		return NULL;
 	}
 
 	/**
@@ -56,8 +82,9 @@ class Item extends Model
 				->value;
 
 			$pairs[] = [
-				'name' => $name,
-				'value' => $value
+				'property_id'   => $property->id,
+				'name'          => $name,
+				'value'         => $value
 			];
 		}
 
@@ -71,6 +98,19 @@ class Item extends Model
 	 */
 	public function hasProperties():bool {
 		return (bool)$this->values()->count();
+	}
+
+	public function registerMediaCollections():void {
+		$this->addMediaCollection('images');
+	}
+
+	public function registerMediaConversions(?Media $media = null):void {
+		$this
+			->addMediaConversion('image')
+			->performOnCollections('images')
+			->width(984, [Constraint::PreserveAspectRatio])
+			->format('webp')
+			->nonQueued();
 	}
 
 	/**

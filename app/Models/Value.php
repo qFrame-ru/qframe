@@ -8,7 +8,7 @@ class Value extends Model
 {
 	use HasFactory;
 
-	protected $fillable = ['value'];
+	protected $fillable = ['property_id', 'value'];
 
 	/**
 	 * Объект
