@@ -1,7 +1,7 @@
 <?php namespace App\Models;
 
+use Dyrynda\Database\Support\NullableFields;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,12 +10,15 @@ use Spatie\Image\Enums\Constraint;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use function App\Helpers\get_model_id;
+use function App\Helpers\get_model;
 
 class Item extends Model implements HasMedia
 {
-	use HasFactory, HasPosition, InteractsWithMedia;
+	use HasFactory, HasPosition, InteractsWithMedia, NullableFields;
 
 	protected $fillable = ['name', 'description'];
+	protected $nullable = ['description'];
 
 	/**
 	 * Значения
@@ -37,15 +40,53 @@ class Item extends Model implements HasMedia
 		$value = trim($value);
 
 		if (mb_strlen($value)) {
-			$property_id = is_int($property)
-				? $property
-				: $property->id;
-
+			$property_id = get_model_id($property);
 			$value_data = compact('property_id', 'value');
-			return $this->values()->create($value_data);
+
+			return $this
+				->values()
+				->create($value_data);
 		}
 
 		return NULL;
+	}
+
+	public function updateValue(Property|int $property, string|NULL $value):void {
+		$value = trim($value);
+		$value_model = $this->getValueModelOfProperty($property);
+
+		if ($value_model) {
+			// Если модель значения уже существует
+
+			if (mb_strlen($value)) {
+				// Если есть что сохранять, то сохраняем
+				$value_model->value = $value;
+				$value_model->save();
+			} else {
+				// Если сохранять нечего, то удаляем модель значения
+				$value_model->delete();
+			}
+		} else {
+			// Если модели значения ещё не существует,
+			// то создаём её
+			$this->addValue($property, $value);
+		}
+	}
+
+	/**
+	 * Получить модель значения по свойству
+	 *
+	 * @param Property|int $property
+	 * @return Value|NULL
+	 */
+	public function getValueModelOfProperty(Property|int $property):Value|NULL {
+		$property_id = get_model_id($property);
+
+		return
+			$this
+				->values()
+				->where('property_id', $property_id)
+				->first();
 	}
 
 	/**
@@ -130,5 +171,13 @@ class Item extends Model implements HasMedia
 	 */
 	public function hasImages():bool {
 		return (bool)$this->getImagesCount();
+	}
+
+	protected static function booted() {
+		static::deleting(function (Item $item) {
+			foreach ($item->values as $value) {
+				$value->delete();
+			}
+		});
 	}
 }

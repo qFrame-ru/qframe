@@ -23,8 +23,6 @@ class Contact extends Component
 	 */
 	#[On('contacts-updated')]
 	public function update():void {
-		$value = trim($this->value);
-		$this->value = mb_strlen($value) ? $value : NULL;
 		$this->contact->value = $this->value;
 		$this->contact->save();
 	}

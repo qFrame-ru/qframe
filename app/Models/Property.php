@@ -19,4 +19,12 @@ class Property extends Model
 	public function values():HasMany {
 		return $this->hasMany(Value::class);
 	}
+
+	protected static function booted() {
+		static::deleting(function (Property $property) {
+			foreach ($property->values as $value) {
+				$value->delete();
+			}
+		});
+	}
 }

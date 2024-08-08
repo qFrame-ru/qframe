@@ -1,11 +1,12 @@
 <?php namespace App\Models;
 
+use Dyrynda\Database\Support\NullableFields;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Metatag extends Model
 {
-	use HasFactory;
+	use HasFactory, NullableFields;
 
 	const TYPE_HOME_TITLE = 'home-title';
 	const TYPE_HOME_DESCRIPTION = 'home-description';
@@ -13,6 +14,7 @@ class Metatag extends Model
 	const TYPE_HOME_H1 = 'home-h1';
 
 	protected $fillable = ['type', 'value'];
+	protected $nullable = ['value'];
 
 	/**
 	 * Получить тег

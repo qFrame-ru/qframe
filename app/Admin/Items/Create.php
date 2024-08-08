@@ -20,7 +20,7 @@ class Create extends Component
 		// Подготовка данных
 		$data = [
 			'name' => trim($this->name),
-			'description' => trim($this->description)
+			'description' => $this->description
 		];
 
 		// Создание объекта
@@ -29,12 +29,7 @@ class Create extends Component
 
 		// Создание значений свойств
 		foreach ($this->values as $property_id => $value) {
-			$value = trim($value);
-
-			if (mb_strlen($value)) {
-				$value_data = compact('property_id', 'value');
-				$item->values()->create($value_data);
-			}
+			$item->addValue($property_id, $value);
 		}
 
 		$this->redirectRoute('admin.items.index');

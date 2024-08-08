@@ -1,11 +1,12 @@
 <?php namespace App\Models;
 
+use Dyrynda\Database\Support\NullableFields;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-	use HasFactory;
+	use HasFactory, NullableFields;
 
 	const TYPE_COMPANY_NAME = 'company-name';
 	const TYPE_PHONE = 'phone';
@@ -13,6 +14,7 @@ class Contact extends Model
 	const TYPE_SCHEDULE = 'schedule';
 
 	protected $fillable = ['type', 'value'];
+	protected $nullable = ['value'];
 
 	/**
 	 * Получить контакт
