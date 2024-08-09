@@ -15,7 +15,7 @@
 					<div class="card">
 						<div class="card-image">
 							<figure class="image">
-								<img src="">
+								<img src="{{ $item->getFirstMediaUrl('images', 'image') }}">
 							</figure>
 						</div>
 						<div class="card-content">{{ $item->name }}</div>
