@@ -3,11 +3,11 @@
 	@if ($item->hasImages())
 		<span class="slider">
 			<span class="swiper-wrapper">
-				@for ($i = 1; $i <= $item->getImagesCount(); $i++)
+				@foreach($item->getImages() as $image)
 					<span class="swiper-slide">
-						<img src="{{ asset('i/' . $item->id . '/' . $i . '.webp') }}">
+						<img src="{{ $image->getUrl('image') }}" alt="{{ $item->name }}">
 					</span>
-				@endfor
+				@endforeach
 			</span>
 			<span class="swiper-pagination"></span>
 		</span>

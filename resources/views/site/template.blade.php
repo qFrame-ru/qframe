@@ -15,23 +15,25 @@
 <body class="body">
 <div class="container">
 
-	<header class="header">
-		@if (Route::currentRouteName() == 'index')
-			<img
-				class="header__logo"
-				src="{{ asset('i/logo.webp') }}"
-				alt="{{ \App\Models\Contact::getValue(\App\Models\Contact::TYPE_COMPANY_NAME) }}"
-			>
-		@else
-			<a href="{{ route('site.index') }}">
+	@if(\App\Models\Logo::hasLogoMedia())
+		<header class="header">
+			@if (Route::currentRouteName() == 'site.index')
 				<img
 					class="header__logo"
-					src="{{ asset('i/logo.webp') }}"
+					src="{{ \App\Models\Logo::getLogoUrl() }}"
 					alt="{{ \App\Models\Contact::getValue(\App\Models\Contact::TYPE_COMPANY_NAME) }}"
 				>
-			</a>
-		@endif
-	</header>
+			@else
+				<a href="{{ route('site.index') }}">
+					<img
+						class="header__logo"
+						src="{{ \App\Models\Logo::getLogoUrl() }}"
+						alt="{{ \App\Models\Contact::getValue(\App\Models\Contact::TYPE_COMPANY_NAME) }}"
+					>
+				</a>
+			@endif
+		</header>
+	@endif
 
 	<main class="content">
 		@yield('content')

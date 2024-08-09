@@ -2,6 +2,7 @@
 
 use Dyrynda\Database\Support\NullableFields;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +12,6 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use function App\Helpers\get_model_id;
-use function App\Helpers\get_model;
 
 class Item extends Model implements HasMedia
 {
@@ -30,7 +30,7 @@ class Item extends Model implements HasMedia
 	}
 
 	/**
-	 * Добавление значения свойства
+	 * Добавить значения свойства
 	 *
 	 * @param Property|int $property
 	 * @param string|NULL $value
@@ -51,6 +51,13 @@ class Item extends Model implements HasMedia
 		return NULL;
 	}
 
+	/**
+	 * Обновить значение свойства
+	 *
+	 * @param Property|int $property
+	 * @param string|NULL $value
+	 * @return void
+	 */
 	public function updateValue(Property|int $property, string|NULL $value):void {
 		$value = trim($value);
 		$value_model = $this->getValueModelOfProperty($property);
@@ -141,6 +148,24 @@ class Item extends Model implements HasMedia
 		return (bool)$this->values()->count();
 	}
 
+	/**
+	 * Есть изображения
+	 *
+	 * @return bool
+	 */
+	public function hasImages():bool {
+		return $this->hasMedia('images');
+	}
+
+	/**
+	 * Получить изображения
+	 *
+	 * @return Collection
+	 */
+	public function getImages():Collection {
+		return $this->getMedia('images');
+	}
+
 	public function registerMediaCollections():void {
 		$this->addMediaCollection('images');
 	}
@@ -152,25 +177,6 @@ class Item extends Model implements HasMedia
 			->width(984, [Constraint::PreserveAspectRatio])
 			->format('webp')
 			->nonQueued();
-	}
-
-	/**
-	 * Получить количество изображений в папке
-	 *
-	 * @return int
-	 */
-	public function getImagesCount():int {
-		$path = public_path('i/' . $this->id);
-		return count(scandir($path)) - 2;
-	}
-
-	/**
-	 * Есть изображения
-	 *
-	 * @return bool
-	 */
-	public function hasImages():bool {
-		return (bool)$this->getImagesCount();
 	}
 
 	protected static function booted() {

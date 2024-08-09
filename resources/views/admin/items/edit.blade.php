@@ -1,4 +1,8 @@
-<form wire:submit="save">
+<form
+	wire:submit="save"
+	x-data="upload"
+	x-bind="container"
+>
 
 	{{--Хлебные крошки--}}
 	<nav class="breadcrumb">
@@ -40,7 +44,7 @@
 	</div>
 
 	{{--Свойства--}}
-	<section class="my-6">
+	<section class="mt-6">
 		<h4 class="subtitle is-4">Свойства</h4>
 		<div class="fixed-grid has-4-cols">
 			<div class="grid">
@@ -58,14 +62,54 @@
 		</div>
 	</section>
 
+	{{--Изображения--}}
+	<section class="my-6">
+		<h4 class="subtitle is-4">Изображения</h4>
+
+		{{--Поле выбора файлов--}}
+		<div class="field">
+			<x-admin.inputs.file field="images" multiple/>
+		</div>
+
+		@if (count($images))
+			<x-admin.notifications.notification message="Загружено изображений: {{ count($images) }}"/>
+		@endif
+
+		{{--Прогресс-бар--}}
+		<x-admin.progress/>
+
+		{{--Изображения--}}
+		@if ($item->hasImages())
+			<div class="fixed-grid has-6-cols">
+				<div class="grid" x-sort="$wire.sortImages">
+					@foreach($item->getImages() as $image)
+						<div class="cell is-draggable" x-sort:item="{{ $image->id }}">
+							<figure class="image">
+								<img src="{{ $image->getUrl('image') }}">
+								<button
+									type="button"
+									class="button is-light is-full-width mt-2"
+
+									wire:click="deleteImage({{ $image->id }})"
+									wire:confirm="Вы уверены, что хотите удалить изображение?"
+								>
+									<x-admin.icon icon="trash" text="Удалить"/>
+								</button>
+							</figure>
+						</div>
+					@endforeach
+				</div>
+			</div>
+		@endif
+
+	</section>
+
 	{{--Кнопки--}}
 	<div class="field is-grouped">
 
 		{{--Сохранить--}}
 		<div class="control">
-			<button type="submit" class="button is-primary">
-				<x-admin.icon icon="check" text="Сохранить"/>
-			</button>
+			<x-admin.inputs.submit bind="submit"/>
 		</div>
 
 		{{--Удалить--}}

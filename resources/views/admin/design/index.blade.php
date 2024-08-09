@@ -4,101 +4,85 @@
 	{{--Логотип--}}
 	<form
 		class="box"
+
+		x-data="upload"
+		x-bind="container"
+
 		wire:submit="updateLogo"
 	>
 		<h4 class="subtitle is-4">Логотип</h4>
 
-		<div
-			class="field"
-
-			x-data="{ uploading: false, progress: 0 }"
-			x-on:livewire-upload-start="uploading = true"
-			x-on:livewire-upload-finish="uploading = false"
-			x-on:livewire-upload-cancel="uploading = false"
-			x-on:livewire-upload-error="uploading = false"
-			x-on:livewire-upload-progress="progress = $event.detail.progress"
-		>
-
-			{{--Поле выбора файла--}}
-			<div class="file">
-				<label class="file-label">
-					<input class="file-input" type="file" wire:model="logoFile"/>
-					<span class="file-cta">
-						<span class="file-icon">
-							<i class="fas fa-upload"></i>
-						</span>
-						<span class="file-label">Выберите файл</span>
-					</span>
-				</label>
-			</div>
-
-			@if ($logoFile)
-				{{--Временное превью--}}
-				<img src="{{ $logoFile->temporaryUrl() }}" style="width: 328px">
-			@elseif ($logoModel->hasLogoMedia())
-				{{--Загруженное изображение--}}
-				<img src="{{ $logoModel->getLogoUrl() }}" style="width: 328px">
-			@endif
-
-			{{--Прогресс-бар--}}
-			<div class="mt-3" x-show="uploading">
-				<progress class="progress is-small" max="100" x-bind:value="progress"></progress>
-			</div>
-
+		{{--Поле выбора файла--}}
+		<div class="field">
+			<x-admin.inputs.file field="logoFile"/>
 		</div>
 
+		@if ($logoFile)
+			{{--Временное превью--}}
+			<div class="is-flex">
+				<img src="{{ $logoFile->temporaryUrl() }}" style="width: 328px">
+			</div>
+		@elseif ($logoModel->hasLogoMedia())
+			{{--Загруженное изображение--}}
+			<div class="is-flex">
+				<img src="{{ $logoModel->getLogoUrl() }}" style="width: 328px">
+			</div>
+		@endif
+
+		{{--Прогресс-бар--}}
+		<x-admin.progress/>
+
+		{{--Уведомление с ошибкой--}}
 		<x-admin.notifications.error field="logoFile"/>
-		<x-admin.inputs.submit/>
+
+		{{--Кнопка--}}
+		<div class="mt-3">
+			<x-admin.inputs.submit bind="submit"/>
+		</div>
+
 	</form>
 
 	{{--Фавиконка--}}
 	<form
 		class="box"
+
+		x-data="upload"
+		x-bind="container"
+
 		wire:submit="updateFavicon"
 	>
 		<h4 class="subtitle is-4">Иконка сайта</h4>
 
-		<div
-			class="field"
-
-			x-data="{ uploading: false, progress: 0 }"
-			x-on:livewire-upload-start="uploading = true"
-			x-on:livewire-upload-finish="uploading = false"
-			x-on:livewire-upload-cancel="uploading = false"
-			x-on:livewire-upload-error="uploading = false"
-			x-on:livewire-upload-progress="progress = $event.detail.progress"
-		>
+		<div class="field">
 
 			{{--Поле выбора файла--}}
-			<div class="file">
-				<label class="file-label">
-					<input class="file-input" type="file" wire:model="faviconFile"/>
-					<span class="file-cta">
-						<span class="file-icon">
-							<i class="fas fa-upload"></i>
-						</span>
-						<span class="file-label">Выберите файл</span>
-					</span>
-				</label>
-			</div>
-
-			@if ($faviconFile)
-				{{--Временное превью--}}
-				<img src="{{ $faviconFile->temporaryUrl() }}" class="image is-32x32">
-			@elseif ($faviconModel->hasFaviconMedia())
-				{{--Загруженное изображение--}}
-				<img src="{{ $faviconModel->getFaviconUrl() }}" class="image is-32x32">
-			@endif
-
-			{{--Прогресс-бар--}}
-			<div class="mt-3" x-show="uploading">
-				<progress class="progress is-small" max="100" x-bind:value="progress"></progress>
-			</div>
+			<x-admin.inputs.file field="faviconFile"/>
 
 		</div>
 
+		@if ($faviconFile)
+			{{--Временное превью--}}
+			<div class="is-flex">
+				<img src="{{ $faviconFile->temporaryUrl() }}" class="image is-32x32">
+			</div>
+		@elseif ($faviconModel->hasFaviconMedia())
+			{{--Загруженное изображение--}}
+			<div class="is-flex">
+				<img src="{{ $faviconModel->getFaviconUrl() }}" class="image is-32x32">
+			</div>
+		@endif
+
+		{{--Прогресс-бар--}}
+		<x-admin.progress/>
+
+		{{--Уведомление с ошибкой--}}
 		<x-admin.notifications.error field="faviconFile"/>
-		<x-admin.inputs.submit/>
+
+		{{--Кнопка--}}
+		<div class="mt-3">
+			<x-admin.inputs.submit bind="submit"/>
+		</div>
+
 	</form>
 
 	{{--Цвета--}}
