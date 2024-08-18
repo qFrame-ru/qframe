@@ -10,7 +10,8 @@ class DatabaseSeeder extends Seeder
 			UserSeeder::class,
 			ContactSeeder::class,
 			MetatagSeeder::class,
-			ColorSeeder::class
+			ColorSeeder::class,
+			LogoSeeder::class
 		]);
 	}
 }
