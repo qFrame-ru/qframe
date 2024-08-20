@@ -32,7 +32,7 @@ class Create extends Component
 			$item->addValue($property_id, $value);
 		}
 
-		$this->redirectRoute('admin.items.index');
+		$this->redirectRoute('admin.items.edit', compact('item'));
 	}
 
 	public function render() {
