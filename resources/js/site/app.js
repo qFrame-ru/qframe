@@ -13,3 +13,5 @@ const swiper = new Swiper('.slider', {
 		clickable: true
 	},
 });
+
+import './demo-scroll.js'
