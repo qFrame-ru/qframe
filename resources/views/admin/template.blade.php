@@ -8,7 +8,7 @@
 	@vite('resources/sass/admin/app.scss')
 	@livewireStyles
 </head>
-<body class="is-flex is-flex-direction-column">
+<body class="vstack">
 
 {{--Шапка--}}
 <nav class="navbar is-fixed-top has-shadow">
@@ -97,41 +97,59 @@
 </section>
 
 {{--Футер--}}
-<footer class="footer py-4 is-size-7 is-flex">
+<footer class="navbar navbar-expand bg-body-tertiary">
+	<div class="container-fluid">
+		<ul class="list-unstyled hstack column-gap-3 small">
 
-	{{--Метка--}}
-	<x-admin.icon bold text="Связь с кьюФрейм"/>
+			{{--Метка--}}
+			<li class="text-secondary">
+				<x-admin.icon bold text="Связь с кьюФрейм"/>
+			</li>
 
-	{{--Чат в Телеграме--}}
-	<a href="https://t.me/m/76kTC2bzZjcy" target="_blank" class="ml-4 has-text-text">
-		<x-admin.icon icon="telegram" collection="fa-brands" text="Написать в Telegram"/>
-	</a>
+			{{--Чат в Телеграме--}}
+			<li>
+				<a href="https://t.me/m/76kTC2bzZjcy" target="_blank" class="link-secondary link-opacity-50-hover">
+					<x-admin.icon icon="telegram" collection="fa-brands" text="Написать в Telegram"/>
+				</a>
+			</li>
 
-	{{--Канал в Телеграме--}}
-	<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="ml-4 has-text-text">
-		<x-admin.icon icon="telegram" collection="fa-brands" text="Канал в Telegram"/>
-	</a>
+			{{--Канал в Телеграме--}}
+			<li>
+				<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="link-secondary link-opacity-50-hover">
+					<x-admin.icon icon="telegram" collection="fa-brands" text="Канал в Telegram"/>
+				</a>
+			</li>
 
-	{{--Группа в VK--}}
-	<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="ml-4 has-text-text">
-		<x-admin.icon icon="vk" collection="fa-brands" text="Группа в VK"/>
-	</a>
+			{{--Группа в VK--}}
+			<li>
+				<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="link-secondary link-opacity-50-hover">
+					<x-admin.icon icon="vk" collection="fa-brands" text="Группа в VK"/>
+				</a>
+			</li>
 
-	{{--Сайт--}}
-	<a href="https://qframe.ru" target="_blank" class="ml-4 has-text-text">
-		<x-admin.icon icon="arrow-up-right-from-square" text="Сайт"/>
-	</a>
+			{{--Сайт--}}
+			<li>
+				<a href="https://qframe.ru" target="_blank" class="link-secondary link-opacity-50-hover">
+					<x-admin.icon icon="arrow-up-right-from-square" text="Сайт"/>
+				</a>
+			</li>
 
-	{{--Электронная почта--}}
-	<a href="mailto:qframe.ru@ya.ru" target="_blank" class="ml-4 has-text-text">
-		<x-admin.icon icon="envelope" text="qframe.ru@ya.ru"/>
-	</a>
+			{{--Электронная почта--}}
+			<li>
+				<a href="mailto:qframe.ru@ya.ru" target="_blank" class="link-secondary link-opacity-50-hover">
+					<x-admin.icon icon="envelope" text="qframe.ru@ya.ru"/>
+				</a>
+			</li>
 
-	{{--Позвонить--}}
-	<a href="tel:+79953336025" target="_blank" class="ml-4 has-text-text">
-		<x-admin.icon icon="phone" text="+7 995 333 60 25"/>
-	</a>
+			{{--Позвонить--}}
+			<li>
+				<a href="tel:+79953336025" target="_blank" class="link-secondary link-opacity-50-hover">
+					<x-admin.icon icon="phone" text="+7 995 333 60 25"/>
+				</a>
+			</li>
 
+		</ul>
+	</div>
 </footer>
 
 @vite('resources/js/admin/app.js')
