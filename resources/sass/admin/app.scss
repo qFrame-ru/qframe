@@ -2,20 +2,8 @@
 @use "../fa/brands.css";
 @use "../fa/fontawesome.css";
 
-$color-brand: #52BD31;
-
+@use "bootstrap/scss/bootstrap";
 @use "bulma";
-:root {
-	--bulma-primary-h: 106deg;
-	--bulma-primary-s: 59%;
-	--bulma-primary-l: 47%;
-	--bulma-link-h: 106deg;
-	--bulma-link-s: 59%;
-	--bulma-link-l: 47%;
-	--bulma-danger-h: 0deg;
-	--bulma-danger-s: 90%;
-	--bulma-danger-l: 65%;
-}
 
 html {
 	height: 100%;
@@ -39,6 +27,7 @@ body {
 }
 
 // Высота 100%
-.is-full-height {
+.is-full-height,
+.height-100{
 	height: 100%;
 }

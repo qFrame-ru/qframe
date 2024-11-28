@@ -1,15 +1,11 @@
 @isset($text)
-	<span class="icon-text">
-		@isset($icon)
-			@php($collection = $collection ?? 'fas')
-			<x-admin.icon :$collection :$icon />
-		@endisset
-		<span
-			@class(['has-text-weight-bold' => $bold ?? false])
-		>{{ $text }}</span>
-	</span>
+	@isset($icon)
+		@php($collection = $collection ?? 'fas')
+		<x-admin.icon :$collection :$icon />
+	@endisset
+	<span
+		@class(['has-text-weight-bold' => $bold ?? false])
+	>{{ $text }}</span>
 @else
-	<span class="icon">
-		<i class="{{ $collection ?? 'fas' }} fa-{{ $icon }}"></i>
-	</span>
+	<i class="{{ $collection ?? 'fas' }} fa-{{ $icon }} fa-fw"></i>
 @endisset

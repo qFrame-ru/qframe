@@ -6,41 +6,33 @@
 	<title>Вход в админцентр</title>
 	@vite('resources/sass/admin/app.scss')
 </head>
-<body>
-<section class="section is-large">
-	<div class="container">
-		<div class="columns">
-			<div class="column is-4 is-offset-4">
-				<form method="POST" action="{{ route('admin.auth.login') }}">
-					@csrf
+<body class="vstack justify-content-center">
+<main class="container-fluid">
+	<div class="row">
+		<form
+			method="POST"
+			class="col-2 mx-auto row-gap-2"
+			action="{{ route('admin.auth.login') }}"
+		>
+			@csrf
 
-					{{--Электронный адрес--}}
-					<div class="field">
-						<label class="label">Электронный адрес</label>
-						<div class="control">
-							<input name="email" type="email" class="input" required>
-						</div>
-					</div>
-
-					{{--Пароль--}}
-					<div class="field">
-						<label class="label">Пароль</label>
-						<div class="control">
-							<input name="password" type="password" class="input" required>
-						</div>
-					</div>
-
-					{{--Кнопка--}}
-					<div class="field">
-						<div class="control">
-							<x-admin.inputs.submit text="Войти"/>
-						</div>
-					</div>
-
-				</form>
+			{{--Электронный адрес--}}
+			<div class="mb-3">
+				<label class="form-label">Электронный адрес</label>
+				<input name="email" type="email" class="form-control" required>
 			</div>
-		</div>
+
+			{{--Пароль--}}
+			<div class="mb-3">
+				<label class="form-label">Пароль</label>
+				<input name="password" type="password" class="form-control" required>
+			</div>
+
+			{{--Кнопка--}}
+			<x-admin.inputs.submit text="Войти"/>
+
+		</form>
 	</div>
-</section>
+</main>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <button
 	type="submit"
-	class="button is-primary"
+	class="btn btn-primary"
 	@isset($bind)
 		x-bind="{{ $bind }}"
 	@endif
