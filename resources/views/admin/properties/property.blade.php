@@ -1,48 +1,30 @@
 <form
-	class="field has-addons"
-	wire:submit="update"
+	class="input-group"
 	x-sort:item="{{ $property->id }}"
+	wire:submit="update"
 >
 
 	{{--Маркер перетаскивания--}}
-	<div class="control">
-		<x-admin.sort-handle/>
-	</div>
+	<x-admin.sort-handle/>
 
 	{{--Поле с названием--}}
-	<div class="control is-expanded">
-		<input
-			type="text"
-			required
-			autocomplete="off"
-			class="input"
-
-			wire:model="name"
-		>
-	</div>
+	<input
+		type="text" required autocomplete="off" class="form-control"
+		wire:model="name"
+	>
 
 	{{--Подтвердить--}}
-	<div class="control">
-		<button
-			type="submit"
-			class="button is-primary"
-		>
-			<x-admin.icon icon="check"/>
-		</button>
-	</div>
-
+	<button type="submit" class="btn btn-primary">
+		<x-admin.icon icon="check"/>
+	</button>
 
 	{{--Удалить--}}
-	<div class="control">
-		<button
-			type="button"
-			class="button is-danger"
-
-			wire:click="delete"
-			wire:confirm="Вы уверены, что хотите удалить свойство? Оно будет удалено из всех объектов без возможности восстановления."
-		>
-			<x-admin.icon icon="trash"/>
-		</button>
-	</div>
+	<button
+		type="button" class="btn btn-danger"
+		wire:click="delete"
+		wire:confirm="Вы уверены, что хотите удалить свойство? Оно будет удалено из всех объектов без возможности восстановления."
+	>
+		<x-admin.icon icon="trash"/>
+	</button>
 
 </form>
