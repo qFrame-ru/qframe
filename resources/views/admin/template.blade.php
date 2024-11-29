@@ -82,7 +82,7 @@
 {{--Футер--}}
 <footer class="navbar navbar-expand bg-body-tertiary">
 	<div class="container-fluid">
-		<ul class="list-unstyled hstack column-gap-3 small">
+		<ul class="list-unstyled hstack column-gap-3 small mb-0">
 
 			{{--Метка--}}
 			<li class="text-secondary">

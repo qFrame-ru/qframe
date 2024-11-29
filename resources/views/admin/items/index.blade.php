@@ -10,7 +10,7 @@
 		@foreach($items as $item)
 			<div class="col-3 mb-4">
 				<div class="card">
-					<img src="{{ $item->getFirstMediaUrl('images', 'image') }}">
+					<img src="{{ $item->getFirstMediaUrl('images', 'image') }}" class="card-img-top">
 					<div class="card-body vstack row-gap-2">
 						<div>{{ $item->name }}</div>
 						<a href="{{ route('admin.items.edit', $item) }}" class="btn btn-primary">
