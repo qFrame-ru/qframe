@@ -75,9 +75,9 @@
 </nav>
 
 {{--Контент--}}
-<section class="section is-flex-grow-1">
+<main class="hstack flex-grow-1">
 	<div class="container">{{ $slot }}</div>
-</section>
+</main>
 
 {{--Футер--}}
 <footer class="navbar navbar-expand bg-body-tertiary">
