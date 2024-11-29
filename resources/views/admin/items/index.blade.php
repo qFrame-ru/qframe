@@ -1,32 +1,24 @@
 <div>
 
-	<h1 class="title is-1">Объекты</h1>
+	<h1 class="mb-5">Объекты</h1>
 
-	<div class="my-6">
-		<a href="{{ route('admin.items.create') }}" class="button is-primary">
-			<x-admin.icon icon="plus" text="Новый объект" />
-		</a>
-	</div>
+	<a href="{{ route('admin.items.create') }}" class="btn btn-primary">
+		<x-admin.icon icon="plus" text="Новый объект" />
+	</a>
 
-	<div class="fixed-grid has-4-cols">
-		<div class="grid">
-			@foreach($items as $item)
-				<div class="cell">
-					<div class="card">
-						<div class="card-image">
-							<figure class="image">
-								<img src="{{ $item->getFirstMediaUrl('images', 'image') }}">
-							</figure>
-						</div>
-						<div class="card-content">{{ $item->name }}</div>
-						<div class="card-footer">
-							<a href="{{ route('admin.items.edit', $item) }}" class="card-footer-item">
-								<x-admin.icon icon="pencil" text="Редактировать"/>
-							</a>
-						</div>
+	<div class="row mt-4">
+		@foreach($items as $item)
+			<div class="col-3 mb-4">
+				<div class="card">
+					<img src="{{ $item->getFirstMediaUrl('images', 'image') }}">
+					<div class="card-body vstack row-gap-2">
+						<div>{{ $item->name }}</div>
+						<a href="{{ route('admin.items.edit', $item) }}" class="btn btn-primary">
+							<x-admin.icon icon="pencil" text="Редактировать"/>
+						</a>
 					</div>
 				</div>
-			@endforeach
-		</div>
+			</div>
+		@endforeach
 	</div>
 </div>

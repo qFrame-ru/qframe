@@ -76,7 +76,7 @@
 
 {{--Контент--}}
 <main class="hstack flex-grow-1">
-	<div class="container">{{ $slot }}</div>
+	<div class="container py-5">{{ $slot }}</div>
 </main>
 
 {{--Футер--}}
@@ -91,45 +91,47 @@
 
 			{{--Чат в Телеграме--}}
 			<li>
-				<a href="https://t.me/m/76kTC2bzZjcy" target="_blank" class="link-secondary link-opacity-50-hover">
+				<a href="https://t.me/m/76kTC2bzZjcy" target="_blank" class="link-secondary link-opacity-75-hover link-underline link-underline-opacity-0">
 					<x-admin.icon icon="telegram" collection="fa-brands" text="Написать в Telegram"/>
 				</a>
 			</li>
 
 			{{--Канал в Телеграме--}}
 			<li>
-				<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="link-secondary link-opacity-50-hover">
+				<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="link-secondary link-opacity-75-hover link-underline link-underline-opacity-0">
 					<x-admin.icon icon="telegram" collection="fa-brands" text="Канал в Telegram"/>
 				</a>
 			</li>
 
 			{{--Группа в VK--}}
 			<li>
-				<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="link-secondary link-opacity-50-hover">
+				<a href="https://t.me/+JMz_sAYCA_cwYWJi" target="_blank" class="link-secondary link-opacity-75-hover link-underline link-underline-opacity-0">
 					<x-admin.icon icon="vk" collection="fa-brands" text="Группа в VK"/>
 				</a>
 			</li>
 
 			{{--Сайт--}}
 			<li>
-				<a href="https://qframe.ru" target="_blank" class="link-secondary link-opacity-50-hover">
+				<a href="https://qframe.ru" target="_blank" class="link-secondary link-opacity-75-hover link-underline link-underline-opacity-0">
 					<x-admin.icon icon="arrow-up-right-from-square" text="Сайт"/>
 				</a>
 			</li>
 
 			{{--Электронная почта--}}
 			<li>
-				<a href="mailto:qframe.ru@ya.ru" target="_blank" class="link-secondary link-opacity-50-hover">
+				<a href="mailto:qframe.ru@ya.ru" target="_blank" class="link-secondary link-opacity-75-hover link-underline link-underline-opacity-0">
 					<x-admin.icon icon="envelope" text="qframe.ru@ya.ru"/>
 				</a>
 			</li>
 
 			{{--Позвонить--}}
-			<li>
-				<a href="tel:+79953336025" target="_blank" class="link-secondary link-opacity-50-hover">
-					<x-admin.icon icon="phone" text="+7 995 333 60 25"/>
-				</a>
-			</li>
+			@if (false)
+				<li>
+					<a href="tel:+79953336025" target="_blank" class="link-secondary link-opacity-75-hover link-underline link-underline-opacity-0">
+						<x-admin.icon icon="phone" text="+7 995 333 60 25"/>
+					</a>
+				</li>
+			@endif
 
 		</ul>
 	</div>

@@ -3,13 +3,13 @@
 @use "../fa/fontawesome.css";
 
 @use "bootstrap/scss/bootstrap";
-//@use "bulma";
 
 html {
 	height: 100%;
 }
 body {
 	min-height: 100%;
+	padding-top: 60px;
 }
 
 // Класс для курсора перетаскивания

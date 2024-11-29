@@ -4,7 +4,7 @@
 		<x-admin.icon :$collection :$icon />
 	@endisset
 	<span
-		@class(['has-text-weight-bold' => $bold ?? false])
+		@class(['fw-bold' => $bold ?? false])
 	>{{ $text }}</span>
 @else
 	<i class="{{ $collection ?? 'fas' }} fa-{{ $icon }} fa-fw"></i>
