@@ -1,12 +1,7 @@
-<div class="field">
-	<label class="label">{{ trans('contacts.' . $type) }}</label>
-	<div class="control">
-		<input
-			class="input"
-			type="text"
-			autocomplete="off"
-
-			wire:model="value"
-		>
-	</div>
+<div class="mb-3">
+	<label class="form-label">{{ trans('contacts.' . $type) }}</label>
+	<input
+		class="form-control" type="text" autocomplete="off"
+		wire:model="value"
+	>
 </div>

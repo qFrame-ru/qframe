@@ -1,6 +1,6 @@
 <form wire:submit="update">
 
-	<h1 class="title">Контакты</h1>
+	<h1 class="mb-5">Контакты</h1>
 
 	<livewire:contacts.contact type="{{ \App\Models\Contact::TYPE_COMPANY_NAME }}"/>
 	<livewire:contacts.contact type="{{ \App\Models\Contact::TYPE_PHONE }}"/>
