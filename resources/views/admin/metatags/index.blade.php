@@ -1,6 +1,6 @@
 <form wire:submit="update">
 
-	<h1 class="title">Поисковая оптимизация</h1>
+	<h1 class="mb-5">Поисковая оптимизация</h1>
 
 	<livewire:metatags.metatag type="{{ \App\Models\Metatag::TYPE_HOME_TITLE }}"/>
 	<livewire:metatags.metatag type="{{ \App\Models\Metatag::TYPE_HOME_DESCRIPTION }}"/>

@@ -1,11 +1,8 @@
-<div class="field">
-	<label class="label">{{ trans('metatags.' . $type) }}</label>
+<div class="mb-3">
+	<label class="form-label">{{ trans('metatags.' . $type) }}</label>
 	<div class="control">
 		<input
-			class="input"
-			type="text"
-			autocomplete="off"
-
+			class="form-control" type="text" autocomplete="off"
 			wire:model="value"
 		>
 	</div>
