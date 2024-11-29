@@ -1,9 +1,8 @@
 <div
 	@class([
-		'notification',
-		'is-light',
+		'alert',
 		'mt-2',
-		'is-danger' => $error ?? false
+		'alert-danger' => $error ?? false
 	])>
 	{{ $message }}
 </div>

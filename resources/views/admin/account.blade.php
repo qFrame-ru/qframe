@@ -1,35 +1,24 @@
 <form wire:submit="update">
 
-	<h1 class="title">Аккаунт</h1>
+	<h1 class="mb-5">Аккаунт</h1>
 
 	{{--Электронный адрес--}}
-	<div class="field">
-		<label class="label">Электронный адрес</label>
-		<div class="control">
-			<input
-				type="email"
-				autocomplete="off"
-				required
-				class="input"
-
-				wire:model="email"
-			>
-		</div>
+	<div class="mb-3">
+		<label class="form-label">Электронный адрес</label>
+		<input
+			type="email" autocomplete="off" required class="form-control"
+			wire:model="email"
+		>
 		<x-admin.notifications.error field="email"/>
 	</div>
 
 	{{--Пароль--}}
-	<div class="field">
-		<label class="label">Пароль</label>
-		<div class="control">
-			<input
-				type="password"
-				autocomplete="off"
-				class="input"
-
-				wire:model="password"
-			>
-		</div>
+	<div class="mb-3">
+		<label class="form-label">Пароль</label>
+		<input
+			type="password" autocomplete="off" class="form-control"
+			wire:model="password"
+		>
 		<x-admin.notifications.error field="password"/>
 	</div>
 
