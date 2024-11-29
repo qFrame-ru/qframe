@@ -1,16 +1,16 @@
 <?php
 
-use App\Admin\Account;
-use App\Admin\Contacts\Index as ContactIndex;
-use App\Admin\Design\Index as DesignIndex;
-use App\Admin\Items\Index as ItemIndex;
-use App\Admin\Items\Create as ItemCreate;
-use App\Admin\Items\Edit as ItemEdit;
-use App\Admin\Metatags\Index as MetatagIndex;
-use App\Admin\Properties\Index as PropertyIndex;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\SiteController;
 use App\Http\Middleware\CheckAdminAuth;
+use App\Livewire\Admin\Account;
+use App\Livewire\Admin\Contacts\Index as ContactIndex;
+use App\Livewire\Admin\Design\Index as DesignIndex;
+use App\Livewire\Admin\Items\Create as ItemCreate;
+use App\Livewire\Admin\Items\Edit as ItemEdit;
+use App\Livewire\Admin\Items\Index as ItemIndex;
+use App\Livewire\Admin\Metatags\Index as MetatagIndex;
+use App\Livewire\Admin\Properties\Index as PropertyIndex;
 use Illuminate\Support\Facades\Route;
 
 // Сайт

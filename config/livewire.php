@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'class_namespace' => 'App\\Admin',
+    'class_namespace' => 'App\\Livewire',
 
     /*
     |---------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'view_path' => resource_path('views/admin'),
+    'view_path' => resource_path('views/livewire'),
 
     /*
     |---------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'layout' => 'admin.template',
+    'layout' => 'livewire.template',
 
     /*
     |---------------------------------------------------------------------------
