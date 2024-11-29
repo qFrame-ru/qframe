@@ -1,21 +1,15 @@
-<div class="cell">
-	<label class="label">{{ trans('colors.' . $name) }}</label>
-	<div class="field has-addons">
+<div class="col-3 mb-3">
+	<label class="form-label">{{ trans('colors.' . $name) }}</label>
+	<div class="input-group">
 
 		{{--Пикер--}}
-		<div class="control">
-			<input class="is-full-height" type="color" wire:model="hex">
-		</div>
+		<input type="color" class="form-control" wire:model="hex" style="height: 38px">
 
 		{{--Просто текстовое полее вода--}}
-		<div class="control">
-			<input
-				type="text"
-				class="input"
-
-				wire:model="hex"
-			>
-		</div>
+		<input
+			type="text" class="form-control"
+			wire:model="hex"
+		>
 
 	</div>
 </div>

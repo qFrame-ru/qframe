@@ -1,3 +1,9 @@
-<div class="my-3" x-show="{{ $flag ?? 'uploading' }}">
-	<progress class="progress is-small" max="100" x-bind:value="{{ $progress ?? 'progress' }}"></progress>
+<div
+	class="progress my-3" style="height: 4px"
+	x-show="{{ $flag ?? 'uploading' }}"
+>
+	<div
+		class="progress-bar"
+		x-bind:style="progressBarStyle"
+	></div>
 </div>

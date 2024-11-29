@@ -1,6 +1,11 @@
 export default () => ({
 	uploading: false,
 	progress: 0,
+	progressBarStyle: function() {
+		return {
+			width: this.progress + '%'
+		}
+	},
 	startUpload: function() {
 		this.uploading = true;
 	},

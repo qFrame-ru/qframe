@@ -1,107 +1,96 @@
-<section>
-	<h1 class="title">Дизайн</h1>
+<section class="vstack row-gap-4">
+	<h1>Дизайн</h1>
 
 	{{--Логотип--}}
 	<form
-		class="box"
-
-		x-data="upload"
-		x-bind="container"
-
+		class="card"
+		x-data="upload" x-bind="container"
 		wire:submit="updateLogo"
 	>
-		<h4 class="subtitle is-4">Логотип</h4>
+		<div class="card-header">Логотип</div>
+		<div class="card-body">
 
-		{{--Поле выбора файла--}}
-		<div class="field">
+			{{--Поле выбора файла--}}
 			<x-admin.inputs.file field="logoFile"/>
-		</div>
 
-		@if ($logoFile)
-			{{--Временное превью--}}
-			<div class="is-flex">
+			@if ($logoFile)
+				{{--Временное превью--}}
 				<img src="{{ $logoFile->temporaryUrl() }}" style="width: 328px">
-			</div>
-		@elseif ($logoModel->hasLogoMedia())
-			{{--Загруженное изображение--}}
-			<div class="is-flex">
+			@elseif ($logoModel->hasLogoMedia())
+				{{--Загруженное изображение--}}
 				<img src="{{ $logoModel->getLogoUrl() }}" style="width: 328px">
+			@endif
+
+			{{--Прогресс-бар--}}
+			<x-admin.progress/>
+
+			{{--Уведомление с ошибкой--}}
+			<x-admin.notifications.error field="logoFile"/>
+
+			{{--Кнопка--}}
+			<div class="mt-3">
+				<x-admin.inputs.submit bind="submit"/>
 			</div>
-		@endif
 
-		{{--Прогресс-бар--}}
-		<x-admin.progress/>
-
-		{{--Уведомление с ошибкой--}}
-		<x-admin.notifications.error field="logoFile"/>
-
-		{{--Кнопка--}}
-		<div class="mt-3">
-			<x-admin.inputs.submit bind="submit"/>
 		</div>
-
 	</form>
 
 	{{--Фавиконка--}}
 	<form
-		class="box"
-
-		x-data="upload"
-		x-bind="container"
-
+		class="card"
+		x-data="upload" x-bind="container"
 		wire:submit="updateFavicon"
 	>
-		<h4 class="subtitle is-4">Иконка сайта</h4>
+		<div class="card-header">Иконка сайта</div>
 
-		<div class="field">
+		<div class="card-body">
 
 			{{--Поле выбора файла--}}
 			<x-admin.inputs.file field="faviconFile"/>
 
-		</div>
+			@if ($faviconFile)
+				{{--Временное превью--}}
+				<img src="{{ $faviconFile->temporaryUrl() }}" style="width: 32px; height: 32px">
+			@elseif ($faviconModel->hasFaviconMedia())
+				{{--Загруженное изображение--}}
+				<img src="{{ $faviconModel->getFaviconUrl() }}" style="width: 32px; height: 32px">
+			@endif
 
-		@if ($faviconFile)
-			{{--Временное превью--}}
-			<div class="is-flex">
-				<img src="{{ $faviconFile->temporaryUrl() }}" class="image is-32x32">
+			{{--Прогресс-бар--}}
+			<x-admin.progress/>
+
+			{{--Уведомление с ошибкой--}}
+			<x-admin.notifications.error field="faviconFile"/>
+
+			{{--Кнопка--}}
+			<div class="mt-3">
+				<x-admin.inputs.submit bind="submit"/>
 			</div>
-		@elseif ($faviconModel->hasFaviconMedia())
-			{{--Загруженное изображение--}}
-			<div class="is-flex">
-				<img src="{{ $faviconModel->getFaviconUrl() }}" class="image is-32x32">
-			</div>
-		@endif
 
-		{{--Прогресс-бар--}}
-		<x-admin.progress/>
-
-		{{--Уведомление с ошибкой--}}
-		<x-admin.notifications.error field="faviconFile"/>
-
-		{{--Кнопка--}}
-		<div class="mt-3">
-			<x-admin.inputs.submit bind="submit"/>
 		</div>
 
 	</form>
 
 	{{--Цвета--}}
 	<form
-		class="box mt-6"
+		class="card"
 		wire:submit="updateColors"
 	>
-		<h4 class="subtitle is-4">Цвета</h4>
-		<div class="grid is-col-min-12 is-row-gap-4">
-			<livewire:design.color name="accent"/>
-			<livewire:design.color name="accent-swipe"/>
-			<livewire:design.color name="stroke"/>
-			<livewire:design.color name="slider-bullet"/>
-			<livewire:design.color name="card-text"/>
-			<livewire:design.color name="card-background"/>
-			<livewire:design.color name="page-text"/>
-			<livewire:design.color name="page-background"/>
+		<div class="card-header">Цвета</div>
+		<div class="card-body">
+			<div class="row">
+				<livewire:design.color name="accent"/>
+				<livewire:design.color name="accent-swipe"/>
+				<livewire:design.color name="stroke"/>
+				<livewire:design.color name="slider-bullet"/>
+				<livewire:design.color name="card-text"/>
+				<livewire:design.color name="card-background"/>
+				<livewire:design.color name="page-text"/>
+				<livewire:design.color name="page-background"/>
+			</div>
+
+			<x-admin.inputs.submit/>
 		</div>
-		<x-admin.inputs.submit/>
 	</form>
 
 </section>
