@@ -10,85 +10,68 @@
 </head>
 <body class="vstack">
 
-{{--Шапка--}}
-<nav class="navbar is-fixed-top has-shadow">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+	<div class="container-fluid">
 
-	{{--Логотип и кнопка-бургер--}}
-	<div class="navbar-brand">
-		@if(Route::is('admin.index'))
-			<span class="navbar-item">
-				<img src="{{ asset('a/i/logo_full.svg') }}">
-			</span>
-		@else
-			<a class="navbar-item" href="{{ route('admin.index') }}" wire:navigate>
-				<img src="{{ asset('a/i/logo_full.svg') }}">
-			</a>
-		@endif
-		<a role="button" class="navbar-burger" data-target="navbarMenu">
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
+		{{--Логотип--}}
+		<a class="navbar-brand" href="{{ route('admin.index') }}" wire:navigate>
+			<img src="{{ asset('a/i/logo_full.svg') }}" style="height: 32px">
 		</a>
-	</div>
 
-	{{--Меню--}}
-	<div id="navbarMenu" class="navbar-menu">
+		{{--Кнопка-бургер--}}
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-		{{--Левая часть--}}
-		<div class="navbar-start">
-			@foreach($menu as $title => $value)
-				@if (is_array($value))
-					<livewire:components.nav.dropdown title="{{ $title }}" :items="$value" />
-				@else
-					<livewire:components.nav.item route="{{ $value }}" title="{{ $title }}" />
-				@endif
-			@endforeach
-		</div>
+		{{--Сворачиваемая часть--}}
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-		{{--Правая часть--}}
-		<div class="navbar-end">
-			<div class="navbar-item">
-				<div class="buttons">
+			{{--Меню--}}
+			<ul class="navbar-nav me-auto">
 
-					{{--Ссылка на сайт--}}
-					<a class="button is-primary" href="{{ route('site.index') }}" target="_blank">
-						<x-admin.icon icon="arrow-up-right-from-square" text="Сайт"/>
+				@foreach($menu as $title => $value)
+					@if (is_array($value))
+						<livewire:components.nav.dropdown title="{{ $title }}" :items="$value" />
+					@else
+						<livewire:components.nav.item route="{{ $value }}" title="{{ $title }}" />
+					@endif
+				@endforeach
+
+			</ul>
+
+			{{--Правая часть--}}
+			<div class="hstack column-gap-2">
+
+				{{--Ссылка на сайт--}}
+				<a class="btn btn-primary" href="{{ route('site.index') }}" target="_blank">
+					<x-admin.icon icon="arrow-up-right-from-square" text="Сайт"/>
+				</a>
+
+				{{--Аккаунт--}}
+				<form method="POST" action="{{ route('admin.auth.logout') }}" class="btn-group">
+
+					{{--Профиль--}}
+					<a
+						class="btn btn-secondary"
+						href="{{ route('admin.account') }}"
+						@disabled(Route::is('admin.account'))
+						wire:navigate
+					>
+						<x-admin.icon icon="user" text="Аккаунт"/>
 					</a>
 
-					{{--Аккаунт--}}
-					<form method="POST" action="{{ route('admin.auth.logout') }}" class="field has-addons">
+					{{--Стоит в середине, иначе у первой кнопки углы не скруглённые--}}
+					@csrf
 
-						{{--Профиль--}}
-						<p class="control">
-							<a
-								class="button is-light"
-								href="{{ route('admin.account') }}"
-								@disabled(Route::is('admin.account'))
-								wire:navigate
-							>
-								<x-admin.icon icon="user" text="Аккаунт"/>
-							</a>
-						</p>
+					{{--Выход--}}
+					<button type="submit" class="btn btn-secondary">
+						<x-admin.icon icon="sign-out" text="Выйти"/>
+					</button>
 
-						{{--Стоит в середине, иначе у первой кнопки углы не скруглённые--}}
-						@csrf
-
-						{{--Выход--}}
-						<p class="control">
-							<button type="submit" class="button is-light">
-								<x-admin.icon icon="sign-out" text="Выйти"/>
-							</button>
-						</p>
-
-					</form>
-
-				</div>
+				</form>
 			</div>
 		</div>
-
 	</div>
-
 </nav>
 
 {{--Контент--}}

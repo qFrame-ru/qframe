@@ -1,9 +1,14 @@
-<div class="navbar-item has-dropdown is-hoverable">
-	<a class="navbar-link">{{ $title }}</a>
-
-	<div class="navbar-dropdown">
+<li class="nav-item dropdown">
+	<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{{ $title }}</a>
+	<ul class="dropdown-menu">
 		@foreach($items as $title => $route)
-			<livewire:components.nav.item route="{{ $route }}" title="{{ $title }}" />
+			<li>
+				<a
+					@class(['dropdown-item', 'active' => Route::is($route)])
+					href="{{ route($route) }}"
+					wire:navigate.hover
+				>{{ $title }}</a>
+			</li>
 		@endforeach
-	</div>
-</div>
+	</ul>
+</li>
