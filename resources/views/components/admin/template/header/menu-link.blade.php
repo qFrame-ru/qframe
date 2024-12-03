@@ -1,3 +1,4 @@
+{{--Ссылка в меню--}}
 <li class="nav-item">
 	<a
 		@class(['nav-link', 'active' => Route::is($route)])

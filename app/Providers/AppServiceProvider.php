@@ -10,6 +10,6 @@ class AppServiceProvider extends ServiceProvider
 	}
 
 	public function boot():void {
-		view()->composer('livewire.admin.template', MenuComposer::class);
+		view()->composer('components.admin.template.header.menu', MenuComposer::class);
 	}
 }
