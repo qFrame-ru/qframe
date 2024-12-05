@@ -7,52 +7,38 @@ use Livewire\Component;
 
 class Index extends Component
 {
-	public Collection $properties;
-
-	public string $newPropertyName;
-
-	public function mount():void {
-		$this->syncProperties();
-	}
+	public string $newPropertyName = '';
 
 	/**
-	 * Синхронизация списка свойства
-	 *
-	 * @return void
-	 */
-	#[On('properties-updated')]
-	public function syncProperties():void {
-		$this->properties = Property::orderByPosition()->get();
-	}
-
-	/**
-	 * Создание свойства
+	 * Создание
 	 *
 	 * @return void
 	 */
 	public function create():void {
+		// TODO Сделать валидацию названия нового свойства
 		$data = ['name' => $this->newPropertyName];
 		Property::create($data);
-		$this->newPropertyName = '';
-		$this->dispatch('properties-updated');
+		$this->reset('newPropertyName');
 	}
 
 	/**
-	 * Сортировка свойства
+	 * Сортировка
 	 *
-	 * @param \App\Livewire\Admin\Properties\Property $property
+	 * @param Property $property
 	 * @param int      $position
 	 *
 	 * @return void
 	 */
 	public function sort(Property $property, int $position):void {
 		$property->move($position);
-		$this->syncProperties();
 	}
 
 	public function render() {
+		$properties_query = Property::orderByPosition();
+
 		return view('livewire.admin.properties.index')
 			->layout('livewire.admin.template')
-			->title('Свойства');
+			->title('Свойства')
+			->with('propertiesQuery', $properties_query);
 	}
 }

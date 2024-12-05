@@ -8,7 +8,8 @@ class Property extends Component
 {
 	public PropertyModel $property;
 
-	#[Validate('required', message: 'Необходмо указать название свойства')]
+	// Проработать валидацию названия свойства
+	#[Validate('required', message: 'Необходимо указать название свойства')]
 	public string $name;
 
 	public function mount(PropertyModel $property) {
@@ -34,6 +35,6 @@ class Property extends Component
 	 */
 	public function delete():void {
 		$this->property->delete();
-		$this->dispatch('properties-updated');
+		$this->dispatch('deleted');
 	}
 }

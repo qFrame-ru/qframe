@@ -21,15 +21,18 @@
 	</form>
 
 	{{--Существующие свойства--}}
-	@if ($properties->count())
+	@if ($propertiesQuery->count())
 		<div class="card">
 			<div class="card-header">Существующие свойства</div>
 			<div
 				class="card-body vstack row-gap-2"
 				x-data x-sort="$wire.sort"
 			>
-				@foreach($properties as $property)
-					<livewire:admin.properties.property :key="$property->id" :$property />
+				@foreach($propertiesQuery->get() as $property)
+					<livewire:admin.properties.property
+						:$property
+						@deleted="$refresh"
+						wire:key="property{{ $property->id }}"/>
 				@endforeach
 			</div>
 		</div>
